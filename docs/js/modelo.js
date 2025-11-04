@@ -3,46 +3,25 @@ const modelos = {
         "objetos":[
             {
 
-                "pitch": -8.40,
-                "yaw": 3.23,
+                "pitch":  -6.04,
+                "yaw":  -120.19,
                 "cssClass": "custom-hotspot",
                 "createTooltipArgs": {
-                    "titulo":"Smart TV 32 pulgadas",
+                    "titulo":"Smith",
                     "descripcion":`
-                    Una tele copada, todos queremos una telesmart, 
-                    yo quiero una tele tu quieres una tele, ella quiere una tele, metele wacho
-                    mira esta tremenda es de colores y tiene waifai incluido
-
-                    `,
-                    "url":"https://www.youtube.com/embed/2ajWUp8F694?si=XEYk7BVDaDiQmnAD",
-                    "pitch": -8.40,
-                    "yaw": 3.23,
-            }
+                    Máquina guiada que permite levantar peso con seguridad, mejorando fuerza, técnica y estabilidad en distintos ejercicios`,
+                    "url":"https://www.youtube.com/embed/CQ6V6o7VXcQ?si=maL-MM05y8CQYB46",
+                    "pitch": -6.04,
+                    "yaw": -120.19,
+                }
             },  
-            {
-               
-                "pitch": -21.231,
-                "yaw": 95.08,
-                "cssClass": "custom-hotspot",
-                "createTooltipArgs": {
-                    "titulo":"2 cosinas de pared",
-                    "descripcion":`
-                    ¿Porque tener una si podes tener 2?
-                    No hablo de esposas else cocinas de pared bien copadas,
-                    eheh mira aca te haces tremendas comidas
-                    comer es eso que hace feliz a la gente
-                    Se feliz :)`,
-                    "url":"",
-                    "pitch": -21.231,
-                    "yaw": 95.08,
-                 }
-            },  
+           
         ],
         "salidas":[
             {       
                 "id":0,
-                "pitch": -25.99,
-                "yaw": 44.63,
+                "pitch": 2.95,
+                "yaw": -83.60,
                 "type": "scene",
                 "sceneId": "1",
                 "cssClass": "custom-exit",
@@ -128,7 +107,7 @@ const cuartos = [
     {
         "id":"0",
         "nombre": "circle",
-        "url":"https://www.luofluck.tech/360/1.jpg",
+        "url":"https://www.luofluck.tech/360/8.jpeg",
         "modelos":modelos.circle.objetos,
         "salidas":modelos.circle.salidas,
 
@@ -136,16 +115,9 @@ const cuartos = [
     {
         "id":"1",
         "nombre": "house",
-        "url":"https://www.luofluck.tech/360/2.jpg",
+        "url":"https://www.luofluck.tech/360/7.jpeg",
         "modelos":modelos.house.objetos,
         "salidas":modelos.house.salidas,
     },
-    {
-        "id":"2",
-        "nombre": "cuarto",
-        "url":"https://www.luofluck.tech/360/3.jpg",
-        "modelos":modelos.cuarto.objetos,
-        "salidas":modelos.cuarto.salidas,
-    }
 
 ]

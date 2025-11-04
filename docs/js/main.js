@@ -19,9 +19,6 @@ var iframe = document.querySelector('#iframe');
 
 
 
-
-
-
 const tips = [
   "Puedes desplazarte arrastrando con el dedo o el mouse",
   "Haz zoom acercando o alejando con dos dedos o con la rueda del mouse",
