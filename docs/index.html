@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">    
+    <meta name="description" content="Sala de departamento en 360, recorrido interno frente a sus direcciones">
+    <meta name="keywords" content="Lu_Of_Luck, LuOfLuck, Guerrero Lucas, developer Full-Stack, Fullstack, developer Front-End, developer Back-End, developer django, developer bootstrap"/>
+    <meta name="author" content="Guerrero Lucas" />
+    <meta name="copyright" content="Guerrero Lucas"/>
+    <script src="https://kit.fontawesome.com/9ec8210292.js" crossorigin="anonymous"></script>
+    <!-- Font Awesome 6 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/carga.css">
+    <link rel="stylesheet" href="css/box.css">
+    <link rel="stylesheet" href="css/accesos.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <title>VIAR</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
+    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-94EPE6HH1K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-94EPE6HH1K');
+</script>
+<body>
+<div id="app"> 
+    <div class="imagenes">
+        <div id="panorama" class="paronama image-1 ">   
+            <div id="loading"  role="status" aria-live="polite">
+                <div class="loading-overlay">
+                    <div class="logo">VIAR</div>
+                        <div class="loader" aria-hidden="true"></div>
+
+                        <div class="progress-wrap" aria-hidden="true">
+
+                          <div id="progressBar" class="progress-bar"></div>
+                        </div>
+                    <div id="progressText" class="progress-text">0%</div>
+                     <p class="progress-text progress-text-consejo">Consejo: <span id="consejo__span"></span> </p>
+              </div>
+              <div class="fondo"></div></div>            
+            </div>
+        </div>
+    </div>
+    <div id="box--cartel"class="box box--cartel">
+            <div class="box__header ">
+                <h3 class="box__header__h3">TITULO</h3>
+            </div>
+            <div class="box__body">
+                <p class="box__body__p">
+                    DESCRIPCION
+                </p>
+            </div>
+            <iframe id="iframe" class="box__body__iframe " src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+            <button id="button--end" class=" imagenes__button button--end button--end--active">x</button>   
+    </div>
+    <div id="acceso" class="app__aceso app__aceso--default">
+        <div id="acceso_cont" class="cont">
+          
+        </div>
+        <div id="button-acceso" class="app__aceso__button">
+           <i class="fa-solid fa-angles-right"></i>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer__link">
+        <span>Todos los derechos reservados: </span>
+        <a href="https://www.LuOfLuck.tech" rel="Pagina del autor" class="d-block" target="_BLANK"> 
+            <span>@LuOfLuck</span>
+        </a>
+         <span id="lat"></span>
+    </div>
+    <div class="footer__redes">
+        <a href="https://www.facebook.com/lu.de.luck/" rel="Facebook del autor" class="d-block" target="_BLANK">
+            <i class="fab fa-facebook-square"></i>
+        </a>
+        <a href="https://www.instagram.com/viar.360/" rel="instagram del proyecto" class="d-block" target="_BLANK">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://twitter.com/Lu_Of_Luck" rel="Twitter del autor" class="d-block" target="_BLANK">
+         <i class="fab fa-twitter "></i>
+        </a>
+    </div>
+</footer>
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+<script src="js/modelo.js">
+</script>
+<script src="js/main.js">
+</script>
+</body>
+</html>
