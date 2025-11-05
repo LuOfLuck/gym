@@ -169,9 +169,8 @@
         font-size: 26px;
     }
     .box{
-        width: 35vw;
+        width: 85vw;
         top: 10vh;
-        right: 20px;
         font-size: 13px;
     }
 }
@@ -183,12 +182,11 @@
         font-size: 20px;
     }
     .box{
-        width: 60vw;
+        width: 80vw;
         top: 25vh;
-        left: 15vw;
-        margin: none;
+       ;
+        margin: auto;
         font-size: 14px;
-        background: red;
     }
     .box__header{
         padding: 15px;
@@ -208,9 +206,7 @@
     }
     .box{
         top: 25vh;
-        left: 15vw;
-        margin: none;
-        background: red;
+        margin: auto;
         font-size: 14px;
     }
     .box__header{
@@ -226,15 +222,27 @@
 
 /* === Mediano: Tablets (769px – 1024px) === */
 @media (min-width: 769px) and (max-width: 1024px) {
-
+    .box{
+        width: 85vw;
+        top: 10vh;
+        font-size: 13px;
+    }
 }
 
 /* === Grande: Laptops (1025px – 1440px) === */
 @media (min-width: 1025px) and (max-width: 1440px) {
-
+    .box{
+        width: 85vw;
+        top: 10vh;
+        font-size: 13px;
+    }
 }
 
 /* === Extra grande: Monitores grandes (1441px+) === */
 @media (min-width: 1441px) {
- 
+     .box{
+        width: 85vw;
+        top: 10vh;
+        font-size: 13px;
+    }
 }
