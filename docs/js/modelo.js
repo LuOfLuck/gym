@@ -10,12 +10,34 @@ const modelos = {
                     "titulo":"Smith",
                     "descripcion":`
                     Máquina guiada que permite levantar peso con seguridad, mejorando fuerza, técnica y estabilidad en distintos ejercicios`,
-                    "url":"https://www.youtube.com/embed/CQ6V6o7VXcQ?si=maL-MM05y8CQYB46",
+                    "url":[
+                        {"titulo":"Press Plano 1","link":"https://www.youtube.com/embed/CQ6V6o7VXcQ?si=maL-MM05y8CQYB46"},
+                        {"titulo":"Press Plano 2","link":"https://www.youtube.com/embed/CQ6V6o7VXcQ?si=maL-MM05y8CQYB46"},
+                        {"titulo":"Press Plano 3","link":"https://www.youtube.com/embed/CQ6V6o7VXcQ?si=maL-MM05y8CQYB46"},
+                        ],
                     "pitch": -6.04,
                     "yaw": -120.19,
                 }
             },  
-           
+             {
+                "pitch": -20.19,
+                "yaw": -151.16,
+                "cssClass": "custom-hotspot",
+                "createTooltipArgs": {
+                    "titulo":"RELOS GIGANTE",
+                    "descripcion":`
+                        Una reloj copada, todos queremos un reloj, 
+                        yo quiero un reloj tu quieres una reloj, ella quiere una reloj, metele wacho
+                        mira esta tremenda es de colores y tiene waifai incluido
+
+                        `, "url":[
+                            {"titulo":"Press Plano 4","link":"https://www.youtube.com/embed/CQ6V6o7VXcQ?si=maL-MM05y8CQYB46"},
+                            {"titulo":"Press Plano 5","link":"https://www.youtube.com/embed/CQ6V6o7VXcQ?si=maL-MM05y8CQYB46"},
+                                 ],
+                    "pitch": -20.19,
+                    "yaw": -151.16,
+                }
+            },  
         ],
         "salidas":[
             {       
@@ -31,8 +53,8 @@ const modelos = {
     "house":{
             "objetos":[
             {
-                "pitch": 14.1,
-                "yaw": 1.5,
+                "pitch": -20.19,
+                "yaw": -151.16,
                 "cssClass": "custom-hotspot",
                 "createTooltipArgs": {
                     "titulo":"RELOS GIGANTE",
@@ -41,9 +63,12 @@ const modelos = {
                         yo quiero un reloj tu quieres una reloj, ella quiere una reloj, metele wacho
                         mira esta tremenda es de colores y tiene waifai incluido
 
-                        `, "url":"https://www.youtube.com/embed/2ajWUp8F694?si=XEYk7BVDaDiQmnAD",
-                    "pitch": 14.1,
-                    "yaw": 1.5,
+                        `, "url":[
+                            {"titulo":"Press Plano 4","link":"https://www.youtube.com/embed/CQ6V6o7VXcQ?si=maL-MM05y8CQYB46"},
+                            {"titulo":"Press Plano 5","link":"https://www.youtube.com/embed/CQ6V6o7VXcQ?si=maL-MM05y8CQYB46"},
+                                 ],
+                    "pitch": -20.19,
+                    "yaw": -151.16,
                 }
             },  
         ],
@@ -83,7 +108,12 @@ const modelos = {
                         yo quiero un reloj tu quieres una reloj, ella quiere una reloj, metele wacho
                         mira esta tremenda es de colores y tiene waifai incluido
 
-                        `, "url":"https://www.youtube.com/embed/2ajWUp8F694?si=XEYk7BVDaDiQmnAD",
+                        `, 
+                        "url":[
+                            {"titulo":"Press Plano 1","link":"https://www.youtube.com/embed/CQ6V6o7VXcQ?si=maL-MM05y8CQYB46"},
+                            {"titulo":"Press Plano 2","link":"https://www.youtube.com/embed/CQ6V6o7VXcQ?si=maL-MM05y8CQYB46"},
+                            {"titulo":"Press Plano 3","link":"https://www.youtube.com/embed/CQ6V6o7VXcQ?si=maL-MM05y8CQYB46"},
+                        ],
                     "pitch": -42.38,
                     "yaw": 32.36,
                 }
@@ -107,7 +137,7 @@ const cuartos = [
     {
         "id":"0",
         "nombre": "circle",
-        "url":"https://www.luofluck.tech/360/8.jpeg",
+        "url":"https://www.luofluck.tech/360/8-min.jpeg",
         "modelos":modelos.circle.objetos,
         "salidas":modelos.circle.salidas,
 
@@ -115,7 +145,7 @@ const cuartos = [
     {
         "id":"1",
         "nombre": "house",
-        "url":"https://www.luofluck.tech/360/7.jpeg",
+        "url":"https://www.luofluck.tech/360/7-min.jpeg",
         "modelos":modelos.house.objetos,
         "salidas":modelos.house.salidas,
     },

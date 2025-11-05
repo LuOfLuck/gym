@@ -9,7 +9,7 @@
     <meta name="author" content="Guerrero Lucas" />
     <meta name="copyright" content="Guerrero Lucas"/>
     <script src="https://kit.fontawesome.com/9ec8210292.js" crossorigin="anonymous"></script>
-    <!-- Font Awesome 6 -->
+    
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <link rel="stylesheet" href="css/main.css">
@@ -17,11 +17,12 @@
     <link rel="stylesheet" href="css/box.css">
     <link rel="stylesheet" href="css/accesos.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <title>VIAR</title>
+    <link rel="stylesheet" href="css/carucel.css">
+    <title>VIAR - GYM</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
     <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 </head>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-94EPE6HH1K"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -54,12 +55,27 @@
             <div class="box__header ">
                 <h3 class="box__header__h3">TITULO</h3>
             </div>
-            <div class="box__body">
-                <p class="box__body__p">
-                    DESCRIPCION
-                </p>
+
+             <div id="iframe" class="box__footer">
+                <div class="carousel-wrapper">
+                    <div class="carousel-track" id="carouselTrack">
+                        <!-- Los videos se cargarán aquí dinámicamente -->
+                    </div>
+                </div>
+
+                <div class="carousel-controls">
+                    <button class="carousel-btn" id="prevBtn">‹</button>
+                    
+                    <div class="carousel-indicators" id="indicators">
+                        <!-- Los indicadores se cargarán aquí dinámicamente -->
+                    </div>
+                    
+                    <span class="counter" id="counter">1 / 1</span>
+                    
+                    <button class="carousel-btn" id="nextBtn">›</button>
+                </div>
             </div>
-            <iframe id="iframe" class="box__body__iframe " src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+            
             <button id="button--end" class=" imagenes__button button--end button--end--active">x</button>   
     </div>
     <div id="acceso" class="app__aceso app__aceso--default">
@@ -92,7 +108,7 @@
         </a>
     </div>
 </footer>
-<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
 <script src="js/modelo.js">
 </script>
 <script src="js/main.js">

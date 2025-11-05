@@ -14,10 +14,17 @@ var loadingEl = document.getElementById('loading');
 var progressBar = document.getElementById('progressBar');
 var progressText = document.getElementById('progressText');
 var intervar;
-var iframe = document.querySelector('#iframe');
+var contiframe = document.querySelector('#iframe');
 //C:\Users\Lucas\AppData\Roaming\npm\http-server
 
-
+//carrucel
+        const track = document.getElementById('carouselTrack');
+        const indicators = document.getElementById('indicators');
+        const counter = document.getElementById('counter');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+let currentIndex = 0;
+var length = 0;
 
 const tips = [
   "Puedes desplazarte arrastrando con el dedo o el mouse",
@@ -135,14 +142,31 @@ class ViewerConstructor{
         boxEnd.classList.add('button--end--active');
         boxCartel.classList.add('box--active');
         boxTitulo.innerText = args.titulo;
-        boxDescripcion.innerText = args.descripcion;
-        
-        if(args.url!=""){
-            iframe.src = args.url;
-            iframe.classList.add('box__body__iframe--active');
-        }else{
-            iframe.classList.remove('box__body__iframe--active');
-        }
+        length= args.url.length
+        track.innerHTML="";
+        indicators.innerHTML="";
+        console.log(args.url)
+        args.url.forEach((video, index) => {
+         const div = document.createElement("div");
+            div.className = "video-item";
+            
+            const titulo = document.createElement("h3");
+            titulo.textContent = video.titulo;
+            
+            const iframe = document.createElement("iframe");
+            iframe.src = video.link;
+            iframe.allowFullscreen = true;
+            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+            
+            div.appendChild(titulo);
+            div.appendChild(iframe);
+            track.appendChild(div);
+
+            const indicator = document.createElement("div");
+            indicator.className = "indicator" + (index === 0 ? " active" : "");
+            indicator.addEventListener("click", () => goToSlide(index));
+            indicators.appendChild(indicator);
+      });
     }
     viewerNormalize(){
         document.querySelectorAll(".custom-hotspot--desactive").forEach(e => {
@@ -224,3 +248,32 @@ function hotspot(hotSpotDiv, args) {
     });
 }
 
+  function updateCarousel() {
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            counter.textContent = `${currentIndex + 1} / ${length}`;
+            
+            document.querySelectorAll('.indicator').forEach((ind, i) => {
+                ind.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + length) % length;
+            updateCarousel();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % length;
+            updateCarousel();
+        });
+
+        // Opcional: Auto-play cada 5 segundos
+        // setInterval(() => {
+        //     currentIndex = (currentIndex + 1) % url.length;
+        //     updateCarousel();
+        // }, 5000);
