@@ -163,7 +163,6 @@
     /* === ETIQUETA DE TEXTO === */
     .app__aceso__img .text {
       position: absolute;
-      bottom: -34px;
       left: 50%;
       transform: translateX(-50%);
       color: #5a6c7d;
@@ -178,15 +177,11 @@
       white-space: nowrap;
       pointer-events: none;
       letter-spacing: 0.3px;
-      opacity: 0;
+      opacity: 1;
       transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
 
-    .app__aceso__img:hover .text {
-      opacity: 1;
-      bottom: -38px;
-    }
-
+ 
     /* Indicador activo */
     .app__aceso__img.active .card-wrapper {
       box-shadow: 
