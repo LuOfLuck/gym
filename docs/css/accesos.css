@@ -326,6 +326,9 @@
         inset -4px -4px 8px rgba(255, 255, 255, 0.8);
       transform: scale(0.95);
     }
+    .carousel-wrapper{
+    	max-width: 99%;
+    }
 
 
 /* === Extra pequeño: Celulares chicos (≤ 480px) === */
