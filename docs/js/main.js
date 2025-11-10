@@ -18,11 +18,11 @@ var contiframe = document.querySelector('#iframe');
 //C:\Users\Lucas\AppData\Roaming\npm\http-server
 
 //carrucel
-        const track = document.getElementById('carouselTrack');
-        const indicators = document.getElementById('indicators');
-        const counter = document.getElementById('counter');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
+const track = document.getElementById('carouselTrack');
+const indicators = document.getElementById('indicators');
+const counter = document.getElementById('counter');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
 let currentIndex = 0;
 var length = 0;
 
@@ -138,6 +138,9 @@ class ViewerConstructor{
    
     }
     viewerFocus(args){
+        if(acceso.classList.contains("app__aceso--mostrar")){
+            acceso.classList.remove("app__aceso--mostrar")
+        }
         this.viewer.lookAt(args.pitch, args.yaw, 20, 2500);
         boxEnd.classList.add('button--end--active');
         boxCartel.classList.add('box--active');
@@ -172,12 +175,14 @@ class ViewerConstructor{
         document.querySelectorAll(".custom-hotspot--desactive").forEach(e => {
             if(e){e.classList.remove("custom-hotspot--desactive")}
         });
+        acceso.classList.add("app__aceso--mostrar")
         //buttonTop.style.display = 'block'
         boxEnd.classList.remove("button--end--active");
         boxCartel.classList.remove("box--active");
         let pitch = vistaPrinc.viewer.getPitch(); 
         let yaw   = vistaPrinc.viewer.getYaw();   
         this.viewer.lookAt(pitch, yaw, 120, 2500);
+        track.innerHTML="";
     }
     viewerExit(){
         boxEnd.addEventListener("click", ()=> this.viewerNormalize()) 

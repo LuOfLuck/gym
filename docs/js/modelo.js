@@ -1,43 +1,92 @@
 const modelos = {
     "circle":{
         "objetos":[
+            //Smith
             {
 
                 "pitch":  -6.04,
                 "yaw":  -120.19,
                 "cssClass": "custom-hotspot",
                 "createTooltipArgs": {
-                    "titulo":"Smith",
+                    "titulo":"Máquina Smith",
                     "descripcion":`
                     Máquina guiada que permite levantar peso con seguridad, mejorando fuerza, técnica y estabilidad en distintos ejercicios`,
-                    "url":[
-                        {"titulo":"Press Plano 1","link":"https://www.youtube.com/embed/CQ6V6o7VXcQ?si=maL-MM05y8CQYB46"},
-                        {"titulo":"Press Plano 2","link":"https://www.youtube.com/embed/CQ6V6o7VXcQ?si=maL-MM05y8CQYB46"},
-                        {"titulo":"Press Plano 3","link":"https://www.youtube.com/embed/CQ6V6o7VXcQ?si=maL-MM05y8CQYB46"},
-                        ],
+                    "url":[ 
+                        {"titulo": "Sentadilla", "link": "https://www.youtube.com/embed/vAlQMTTmalE"}, 
+                        {"titulo": "Press de Banca Plano", "link": "https://www.youtube.com/embed/pijIaN_OOfk"}, 
+                        {"titulo": "Press Inclinado (Pecho)", "link": "https://www.youtube.com/embed/5-M7Jm800x4"}, 
+                        {"titulo": "Press Declinado (Pecho)", "link": "https://www.youtube.com/embed/rK5n_eQLqIY"}, 
+                        {"titulo": "Press Militar (Hombro)", "link": "https://www.youtube.com/embed/ORvcK_OuTK0"}, 
+                        {"titulo": "Remo Inclinado", "link": "https://www.youtube.com/embed/RC6zC7ey7CI"}, 
+                        {"titulo": "Remo Vertical", "link": "https://www.youtube.com/embed/KWYDkS2rWnU"}, 
+                        {"titulo": "Encogimiento de Hombros", "link": "https://www.youtube.com/embed/1_tYlA0-acE"}, 
+                        {"titulo": "Peso Muerto Rumano (RDL)", "link": "https://www.youtube.com/embed/Fz9462sRz1E"}, 
+                        {"titulo": "Sentadilla Frontal", "link": "https://www.youtube.com/embed/v2lq0AWe3iY"}, 
+                        {"titulo": "Zancadas (Lunges)", "link": "https://www.youtube.com/embed/sC_XTQqo780"}, 
+                        {"titulo": "Sentadilla Búlgara", "link": "https://www.youtube.com/embed/XGTr0m9a-wM"}, 
+                        {"titulo": "Hip Thrust", "link": "https://www.youtube.com/embed/gIRGfW1NYeY"}, 
+                        {"titulo": "Elevación de Talones", "link": "https://www.youtube.com/embed/mGj9nBf0n90"}, 
+                        {"titulo": "Buenos Días (Good Mornings)", "link": "https://www.youtube.com/embed/Xq4eBZeIW-I"} 
+                    ],
                     "pitch": -6.04,
                     "yaw": -120.19,
                 }
-            },  
-             {
-                "pitch": -20.19,
+            }, 
+            //prensa 
+            {
+                "pitch":-20.19,
                 "yaw": -151.16,
                 "cssClass": "custom-hotspot",
                 "createTooltipArgs": {
-                    "titulo":"RELOS GIGANTE",
-                    "descripcion":`
-                        Una reloj copada, todos queremos un reloj, 
-                        yo quiero un reloj tu quieres una reloj, ella quiere una reloj, metele wacho
-                        mira esta tremenda es de colores y tiene waifai incluido
-
-                        `, "url":[
-                            {"titulo":"Press Plano 4","link":"https://www.youtube.com/embed/CQ6V6o7VXcQ?si=maL-MM05y8CQYB46"},
-                            {"titulo":"Press Plano 5","link":"https://www.youtube.com/embed/CQ6V6o7VXcQ?si=maL-MM05y8CQYB46"},
-                                 ],
+                    "titulo": "Prensa de Piernas",
+                    "descripcion": "Máquina fundamental para el tren inferior. Permite trabajar cuádriceps, glúteos e isquiotibiales con gran peso y soporte lumbar.",
+                    "url": [
+                        {"titulo": "Técnica Prensa 45°", "link": "https://www.youtube.com/embed/wpHk7S4eF5I?si=eFpkGsTL-7Xw_E2e"},
+                        {"titulo": "Errores Comunes", "link": "https://www.youtube.com/embed/Xw0h2hiiYTg?si=j99DNrgoGuhlsjUI"}
+                    ],
                     "pitch": -20.19,
                     "yaw": -151.16,
                 }
-            },  
+            },
+            //mancuernas
+            { 
+                "pitch": -13.06, 
+                "yaw": -33.11, 
+                "cssClass": "custom-hotspot", 
+                "createTooltipArgs": { 
+                    "titulo": "Mancuernas", 
+                    "descripcion": "Elemento fundamental del gimnasio. Su naturaleza de peso libre permite un rango de movimiento completo y natural, mejorando la fuerza y la estabilidad unilateral.", 
+                    "url": [ 
+                        {"titulo": "Sentadilla Goblet", "link": "https://www.youtube.com/embed/SpMrPG3RiCQ"}, 
+                        {"titulo": "Peso Muerto Rumano (RDL)", "link": "https://www.youtube.com/embed/WY8vQ3nIz7A"}, 
+                        {"titulo": "Press Militar (Hombro)", "link": "https://www.youtube.com/embed/rv8aEOWls5E"},  
+                        {"titulo": "Remo Unilateral", "link": "https://www.youtube.com/embed/X-kJyjifh2g"}, 
+                        {"titulo": "Zancadas (Lunges)", "link": "https://www.youtube.com/embed/pPIoI_9MpxE"}, 
+                        {"titulo": "Elevaciones Laterales", "link": "https://www.youtube.com/embed/nOAUECQEpHs"}, 
+                        {"titulo": "Curl Martillo", "link": "https://www.youtube.com/embed/9bsalvR-6vo"}, 
+                        {"titulo": "Sentadilla Búlgara", "link": "https://www.youtube.com/embed/WbPONX8pW6U"} 
+                    ], 
+                    "pitch": -13.06, 
+                    "yaw": -33.11 
+                } 
+            }, 
+            /*
+            { 
+                "pitch": 0, 
+                "yaw": 0, 
+                "cssClass": "custom-hotspot", 
+                "createTooltipArgs": { 
+                    "titulo": "Sillón de Cuádriceps", 
+                    "descripcion": "Máquina de aislamiento diseñada para enfocar el trabajo directamente en los músculos cuádriceps (parte frontal del muslo).", 
+                    "url": [ 
+                        {"titulo": "Técnica Correcta", "link": "https://www.youtube.com/embed/D8CL7VuvvTg"},
+                        {"titulo": "Errores Comunes", "link": "https://www.youtube.com/embed/L4bPYvNVD5U"}, 
+                        {"titulo": "Extensión Unilateral", "link": "https://www.youtube.com/embed/KQSolHWckMs"} 
+                    ], 
+                    "pitch": 0, 
+                    "yaw": 0 
+                } 
+            } */
         ],
         "salidas":[
             {       
@@ -51,26 +100,39 @@ const modelos = {
         ],
     },
     "house":{
-            "objetos":[
+        "objetos":[
             {
-                "pitch": -20.19,
-                "yaw": -151.16,
+                "pitch": -15.65,
+                "yaw": 12.49,
                 "cssClass": "custom-hotspot",
                 "createTooltipArgs": {
-                    "titulo":"RELOS GIGANTE",
-                    "descripcion":`
-                        Una reloj copada, todos queremos un reloj, 
-                        yo quiero un reloj tu quieres una reloj, ella quiere una reloj, metele wacho
-                        mira esta tremenda es de colores y tiene waifai incluido
-
-                        `, "url":[
-                            {"titulo":"Press Plano 4","link":"https://www.youtube.com/embed/CQ6V6o7VXcQ?si=maL-MM05y8CQYB46"},
-                            {"titulo":"Press Plano 5","link":"https://www.youtube.com/embed/CQ6V6o7VXcQ?si=maL-MM05y8CQYB46"},
-                                 ],
-                    "pitch": -20.19,
-                    "yaw": -151.16,
+                    "titulo": "Press Banca (Plano)",
+                    "descripcion": "Ejercicio fundamental para el desarrollo del pecho (pectoral mayor), tríceps y deltoides anterior. Se realiza en un banco plano.",
+                    "url": [
+                        { "titulo": "Técnica Correcta", "link": "https://www.youtube.com/embed/Uq3ADl5-Qp8" },
+                        { "titulo": "Errores Comunes", "link": "https://www.youtube.com/embed/OIIxdZQWkRk" },
+                        { "titulo": "Cómo hacer el 'Set Up'", "link": "https://www.youtube.com/embed/mGIPxWpYfI8" }
+                    ],
+                    "pitch": -15.65,
+                    "yaw": 12.49
                 }
-            },  
+            },
+            {
+                "pitch": -24.39,
+                "yaw": 88.66,
+                "cssClass": "custom-hotspot",
+                "createTooltipArgs": {
+                    "titulo": "Press Banca Inclinado",
+                    "descripcion": "Variante del press de banca que enfatiza la porción superior (clavicular) del pectoral, así como los deltoides anteriores.",
+                    "url": [
+                        { "titulo": "Técnica (Barra)", "link": "https://www.youtube.com/embed/LTCc_PjCqZ4" },
+                        { "titulo": "Errores a Evitar", "link": "https://www.youtube.com/embed/sqwVd_ZgACo" },
+                        { "titulo": "Técnica (Mancuernas)", "link": "https://www.youtube.com/embed/JmYjYfR-e0w" }
+                    ],
+                    "pitch": -24.39,
+                    "yaw": 88.66
+                }
+            },
         ],
         "salidas":[
             {       
@@ -81,62 +143,14 @@ const modelos = {
                 "cssClass": "custom-exit",
                 "text": "",
                 "sceneId": "0"
-
-            },  
-             {       
-                "id":2,
-                "pitch": -9.08,
-                "yaw":  -42.33,
-                "type": "scene",
-                "cssClass": "custom-exit",
-                "text": "",
-                "sceneId": "2"
-
             },  
         ],
     },
-    "cuarto":{
-            "objetos":[
-            {
-                "pitch": -42.38,
-                "yaw": 32.36,
-                "cssClass": "custom-hotspot",
-                "createTooltipArgs": {
-                    "titulo":"RELOS GIGANTE",
-                    "descripcion":`
-                        Una reloj copada, todos queremos un reloj, 
-                        yo quiero un reloj tu quieres una reloj, ella quiere una reloj, metele wacho
-                        mira esta tremenda es de colores y tiene waifai incluido
-
-                        `, 
-                        "url":[
-                            {"titulo":"Press Plano 1","link":"https://www.youtube.com/embed/CQ6V6o7VXcQ?si=maL-MM05y8CQYB46"},
-                            {"titulo":"Press Plano 2","link":"https://www.youtube.com/embed/CQ6V6o7VXcQ?si=maL-MM05y8CQYB46"},
-                            {"titulo":"Press Plano 3","link":"https://www.youtube.com/embed/CQ6V6o7VXcQ?si=maL-MM05y8CQYB46"},
-                        ],
-                    "pitch": -42.38,
-                    "yaw": 32.36,
-                }
-            },  
-        ],
-        "salidas":[  
-             {       
-                "id":2,
-                "pitch":  -19.03,
-                "yaw":  82.30,
-                "type": "scene",
-                "cssClass": "custom-exit",
-                "text": "",
-                "sceneId": "1"
-
-            },  
-        ],
-    }
 }
 const cuartos = [
     {
         "id":"0",
-        "nombre": "circle",
+        "nombre": "Sala 1",
         "url":"https://www.luofluck.tech/360/8-min.jpeg",
         "modelos":modelos.circle.objetos,
         "salidas":modelos.circle.salidas,
@@ -144,7 +158,7 @@ const cuartos = [
     },
     {
         "id":"1",
-        "nombre": "house",
+        "nombre": "Sala 2",
         "url":"https://www.luofluck.tech/360/7-min.jpeg",
         "modelos":modelos.house.objetos,
         "salidas":modelos.house.salidas,

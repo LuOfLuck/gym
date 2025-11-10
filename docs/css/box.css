@@ -1,50 +1,17 @@
-.banner{
-    display: flex;
-  align-items: center;
-  justify-content: center;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--white);
-    background-position: center;
-  background-repeat: no-repeat;
-    background-size: cover;
-    //line extr
-}
-.banner__center{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-}
-.banner__center__h1{
-    text-align: center;
-}
-
-
-/* Iframe */
-.box__body__iframe {
-    display: none;
-    width: 90%;
-    height: 200px;
-    margin: auto;
-    border: none;
-    border-radius: 10px;
-    margin-bottom: 15px;
-}
-
-
-/* Contenedor principal */
+/* === BOX PRINCIPAL === */
 .box {
+    width: 75vw;
     display: flex;
     flex-direction: column;
-    margin: auto 50px auto auto;
+    margin: auto;
+    top: 10vh;
+    left: 0;
+    right: 0;
     position: fixed;
-    top: 15vh;
-    right: 40px;
     font-family: 'Arial', sans-serif;
     color: #fff;
     font-weight: 600;
+    font-size: 16px;
     opacity: 0;
     z-index: -1;
     transition: opacity 0.5s ease, z-index 0s linear 0.5s;
@@ -55,32 +22,37 @@
     border: 1px solid rgba(150, 150, 150, 0.3);
 }
 
-/* Activar box */
 .box--active {
     opacity: 1;
     z-index: 210;
     transition: opacity 0.5s ease;
 }
 
-/* Header del box */
+/* === BOX HEADER Y FOOTER === */
 .box__header {
     background: rgba(120, 120, 120, 0.4);
-    padding: 15px;
+    padding: 20px;
     text-align: left;
-    border-bottom: 1px solid rgba(200, 200, 200, 0.2);
-    box-shadow: 0 0 15px rgba(150,150,150,0.3);
+    box-shadow: 0 0 15px rgba(150, 150, 150, 0.3);
 }
 
 .box__header__h3 {
-    font-size: 1.8em;
+    font-size: clamp(1.2em, 4vw, 1.8em);
     margin: 0;
-    text-shadow: 0 0 10px rgba(200,200,200,0.7);
+    text-shadow: 0 0 10px rgba(200, 200, 200, 0.7);
 }
 
-/* Cuerpo del box */
 .box__body {
-    padding: 15px 20px;
-    background: rgba(80, 80, 80, 0.2);
+    padding: 20px;
+}
+
+.box__body__p {
+    margin-bottom: 1em;
+}
+
+.box__footer {
+    padding: 20px;
+    background: rgba(120, 120, 120, 0.4);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -88,161 +60,326 @@
     backdrop-filter: blur(5px);
 }
 
-.box__body__p {
-    margin-bottom: 15px;
-    text-align: justify;
-    font-size: 1em;
-    line-height: 1.4;
-}
-
-/* Iframe futurista */
-.box__body__iframe {
-    display: none;
-    width: 90%;
-    height: 220px;
-    border: 1px solid rgba(150,150,150,0.3);
-    border-radius: 12px;
-    margin-bottom: 15px;
-    box-shadow: 0 0 20px rgba(120,120,120,0.5), 0 0 40px rgba(100,100,100,0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.box__body__iframe:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 25px rgba(150,150,150,0.7), 0 0 50px rgba(120,120,120,0.5);
-}
-
-.box__body__iframe--active {
-    display: block;
-}
-
-/* Botón cerrar futurista */
+/* === BOTÓN CERRAR === */
 .button--end {
-    height: 25px;
-    width: 25px;
+    height: 35px ;
+    width: 35px ;
     position: absolute;
     top: 15px;
     right: 15px;
     display: none;
     z-index: 1000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    background: #ff4757;
+    color: white;
     border: none;
     border-radius: 50%;
-    background: transparent;
-    color: #fff;
-    font-weight: bold;
-    font-size: 22px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 15px rgba(120,120,120,0.7), 0 0 25px rgba(100,100,100,0.5);
-    animation: pulseButton 2s infinite;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
 .button--end:hover {
-    background: rgba(150,150,150,0.9);
-    transform: scale(1.2);
-    box-shadow: 0 0 25px rgba(150,150,150,0.9), 0 0 50px rgba(130,130,130,0.6);
+    transform: scale(1.1);
 }
 
 .button--end--active {
     display: block;
 }
 
-/* Animación de pulso botón */
-@keyframes pulseButton {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 0 15px rgba(120,120,120,0.7), 0 0 25px rgba(100,100,100,0.5);
-    }
-    50% {
-        transform: scale(1.1);
-        box-shadow: 0 0 20px rgba(150,150,150,0.9), 0 0 40px rgba(130,130,130,0.6);
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 0 15px rgba(120,120,120,0.7), 0 0 25px rgba(100,100,100,0.5);
-    }
+/* === CAROUSEL === */
+.carousel-container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 10px;
 }
 
-
-@media(max-width:768px){    
-    .banner__center{
-        font-size: 26px;
-    }
-    .box{
-        width: 85vw;
-        top: 10vh;
-        font-size: 13px;
-    }
+.carousel-wrapper {
+    overflow: hidden;
 }
 
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
 
-/* === Extra pequeño: Celulares chicos (≤ 480px) === */
+/* === VIDEO ITEMS === */
+.video-item {
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.video-item h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: clamp(18px, 3vw, 24px);
+    color: #fff;
+}
+
+.video-item iframe {
+    width: auto;
+    max-width: 700px;
+    height: 400px;
+    border: none;
+    border-radius: 8px;
+    margin: auto;
+}
+
+/* === CONTROLES DEL CAROUSEL === */
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.carousel-btn {
+    background: #ff4757;
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.carousel-btn:hover {
+    background: #ff6b7a;
+    transform: scale(1.1);
+}
+
+.carousel-btn:active {
+    transform: scale(0.95);
+}
+
+.carousel-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* === INDICADORES === */
+.carousel-indicators {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #555;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: #ff4757;
+    transform: scale(1.3);
+}
+
+.counter {
+    font-size: 18px;
+    color: #aaa;
+    white-space: nowrap;
+}
+
+/* === BANNER === */
+.banner__center {
+    font-size: clamp(20px, 5vw, 32px);
+}
+
+/* === MEDIA QUERIES === */
+
+/* Móviles pequeños (320px - 480px) */
 @media (max-width: 480px) {
-    .banner__center{
-        font-size: 20px;
-    }
-    .box{
-        width: 80vw;
-        top: 25vh;
-       ;
-        margin: auto;
+    .box {
+        width: 95vw;
+        max-width: 95vw;
         font-size: 14px;
+        top: 15vh;
+        border-radius: 15px;
     }
-    .box__header{
+    
+    .box__header {
+        padding: 12px 15px;
+    }
+    
+    .box__body {
         padding: 15px;
     }
-    .box__body{
-        padding: 5px 10px;
+    
+    .box__body__p {
+        margin-bottom: 0.8em;
     }
-    .box__body__p{
-        margin-bottom: 0px;
+    
+    .box__footer {
+        padding: 15px;
+    }
+    
+    .button--end {
+        height: 35px ;
+        width: 35px;
+        font-size: 18px;
+        top: 10px;
+        right: 10px;
+    }
+    
+    .video-item iframe {
+        height: 300px;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .carousel-controls {
+        gap: 10px;
+        margin-top: 20px;
+    }
+    
+    .counter {
+        font-size: 14px;
+    }
+    
+    .indicator {
+        width: 10px;
+        height: 10px;
     }
 }
 
-/* === Pequeño: Celulares medianos (481px – 768px) === */
+/* Móviles medianos (481px - 768px) */
 @media (min-width: 481px) and (max-width: 768px) {
-    .banner__center{
-        font-size: 20px;
-    }
-    .box{
-        top: 25vh;
-        margin: auto;
+    .box {
+        width: 90vw;
         font-size: 14px;
+        top: 7vh;
     }
-    .box__header{
+    
+    .box__header {
         padding: 15px;
     }
-    .box__body{
-        padding: 5px 10px;
+    
+    .box__body {
+        padding: 15px;
     }
-    .box__body__p{
-        margin-bottom: 0px;
+    
+    .box__footer {
+        padding: 15px;
+    }
+    
+    .video-item iframe {
+        height: 280px;
+    }
+    
+    .carousel-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+    
+    .counter {
+        font-size: 16px;
     }
 }
 
-/* === Mediano: Tablets (769px – 1024px) === */
+/* Tablets (769px - 1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
-    .box{
+    .box {
         width: 85vw;
-        top: 10vh;
-        font-size: 13px;
+        font-size: 15px;
+    }
+    
+    .video-item iframe {
+        height: 350px;
     }
 }
 
-/* === Grande: Laptops (1025px – 1440px) === */
-@media (min-width: 1025px) and (max-width: 1440px) {
-    .box{
-        width: 85vw;
-        top: 10vh;
-        font-size: 13px;
+/* Laptops pequeñas (1025px - 1280px) */
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .box {
+        width: 70vw;
+        max-width: 900px;
+        font-size: 15px;
     }
 }
 
-/* === Extra grande: Monitores grandes (1441px+) === */
-@media (min-width: 1441px) {
-     .box{
-        width: 85vw;
-        top: 10vh;
-        font-size: 13px;
+/* Laptops medianas (1281px - 1440px) */
+@media (min-width: 1281px) and (max-width: 1440px) {
+    .box {
+        width: 65vw;
+        max-width: 1000px;
+        font-size: 16px;
+    }
+    .video-item iframe {
+        height: 300px;
+    }
+}
+
+/* Monitores grandes (1441px - 1920px) */
+@media (min-width: 1441px) and (max-width: 1920px) {
+    .box {
+        width: 60vw;
+        max-width: 1200px;
+        font-size: 16px;
+    }
+}
+
+/* Monitores extra grandes (>1920px) */
+@media (min-width: 1921px) {
+    .box {
+        width: 50vw;
+        max-width: 1400px;
+        font-size: 17px;
+    }
+    
+    .video-item iframe {
+        height: 500px;
+    }
+    
+    .carousel-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+    }
+}
+
+/* Landscape mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .box {
+        top: 2vh;
+        max-height: 96vh;
+        overflow-y: auto;
+    }
+    
+    .video-item iframe {
+        height: 250px;
+    }
+}
+
+/* Mejoras de accesibilidad para touch */
+@media (hover: none) and (pointer: coarse) {
+    .carousel-btn,
+    .button--end {
+        min-width: 44px;
+        min-height: 44px;
     }
 }
