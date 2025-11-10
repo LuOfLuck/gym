@@ -138,6 +138,7 @@ class ViewerConstructor{
    
     }
     viewerFocus(args){
+    
         if(acceso.classList.contains("app__aceso--mostrar")){
             acceso.classList.remove("app__aceso--mostrar")
         }
@@ -145,9 +146,14 @@ class ViewerConstructor{
         boxEnd.classList.add('button--end--active');
         boxCartel.classList.add('box--active');
         boxTitulo.innerText = args.titulo;
+        //normalizar 
         length= args.url.length
         track.innerHTML="";
         indicators.innerHTML="";
+        currentIndex= 0;
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        counter.textContent = `${currentIndex + 1} / ${length}`;
+        
         console.log(args.url)
         args.url.forEach((video, index) => {
          const div = document.createElement("div");
@@ -183,6 +189,7 @@ class ViewerConstructor{
         let yaw   = vistaPrinc.viewer.getYaw();   
         this.viewer.lookAt(pitch, yaw, 120, 2500);
         track.innerHTML="";
+   
     }
     viewerExit(){
         boxEnd.addEventListener("click", ()=> this.viewerNormalize()) 
