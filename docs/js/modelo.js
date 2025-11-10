@@ -91,22 +91,29 @@ const modelos = {
     },
     "house":{
         "objetos":[
-            {
-                "pitch": -15.65,
-                "yaw": 12.49,
-                "cssClass": "custom-hotspot",
-                "createTooltipArgs": {
-                    "titulo": "Press Banca (Plano)",
-                    "descripcion": "Ejercicio fundamental para el desarrollo del pecho (pectoral mayor), tríceps y deltoides anterior. Se realiza en un banco plano.",
-                    "url": [
-                        { "titulo": "Técnica Correcta", "link": "https://www.youtube.com/embed/Uq3ADl5-Qp8" },
-                        { "titulo": "Errores Comunes", "link": "https://www.youtube.com/embed/OIIxdZQWkRk" },
-                        { "titulo": "Cómo hacer el 'Set Up'", "link": "https://www.youtube.com/embed/mGIPxWpYfI8" }
-                    ],
-                    "pitch": -15.65,
-                    "yaw": 12.49
-                }
+{
+    "pitch": -15.65,
+    "yaw": 12.49,
+    "cssClass": "custom-hotspot",
+    "createTooltipArgs": {
+        "titulo": "Press Banca (Plano)",
+        "descripcion": "Ejercicio fundamental para el desarrollo del pecho (pectoral mayor), tríceps y deltoides anterior. Se realiza en un banco plano.",
+        "url": [
+            { 
+                "titulo": "Técnica Correcta", "link": "https://www.youtube.com/embed/gRVjAtPip0Y" 
             },
+            { 
+                "titulo": "Errores Comunes", "link": "https://www.youtube.com/embed/qEwKCR5JCog" 
+            },
+            { 
+                "titulo": "Cómo hacer el 'Set Up'", "link": "https://www.youtube.com/embed/3YvfRx31xDE" 
+            }
+        ],
+        "pitch": -15.65,
+        "yaw": 12.49
+    }
+},
+
             {
                 "pitch": -24.39,
                 "yaw": 88.66,
@@ -115,9 +122,9 @@ const modelos = {
                     "titulo": "Press Banca Inclinado",
                     "descripcion": "Variante del press de banca que enfatiza la porción superior (clavicular) del pectoral, así como los deltoides anteriores.",
                     "url": [
-                        { "titulo": "Técnica (Barra)", "link": "https://www.youtube.com/embed/LTCc_PjCqZ4" },
-                        { "titulo": "Errores a Evitar", "link": "https://www.youtube.com/embed/sqwVd_ZgACo" },
-                        { "titulo": "Técnica (Mancuernas)", "link": "https://www.youtube.com/embed/JmYjYfR-e0w" }
+                        { "titulo": "Técnica (Barra)", "link": "https://www.youtube.com/embed/0G2_XV7slIg" },
+                        { "titulo": "Errores a Evitar", "link": "https://www.youtube.com/embed/HYv_MxYohmQ" },
+                        { "titulo": "Técnica (Mancuernas)", "link": "https://www.youtube.com/embed/8iPEnn-ltC8" }
                     ],
                     "pitch": -24.39,
                     "yaw": 88.66
