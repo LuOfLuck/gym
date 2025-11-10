@@ -1,134 +1,409 @@
-.app__aceso{
-	z-index: -1000;
-	position: absolute;
-	bottom: 15%;
-	left: 15px;
-	height: 10vh;
-	width: 30vw;
-  	border-radius: 12px;
-  	padding: 10px;
-  	background: rgba(120, 120, 120, 0.4);
-  	backdrop-filter: blur(12px);
-    border: 1px solid rgba(200, 200, 200, 0.2);
-    box-shadow: 0 0 15px rgba(150,150,150,0.3);
-	overflow: hidden;
-	transition: 1s linear;
-}
-.app__aceso--mostrar{
-	z-index: 2000;
-}
-.cont{
-	padding: 5px 5px;
-	display: inline-block;
-	max-width: 100%;
-	height: 105%;
-	white-space: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-	scroll-behavior: smooth;
-	transition: .5s linear;
-}
-.app__aceso__img{
-	display: inline-block;
-	transition: transform .5s;
-	position: relative;
-	cursor: pointer;
-	margin-left:5px;
-}
-.app__aceso__img img{
- 	height: 9vh;
-	background: white;
-	padding: 1px;
-	border-radius: 10px;
-  	font-size: 14px;
-  	color: #444;
-  	box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  	transition: transform 0.2s;
-}
-.app__aceso__img:hover {
-	transform: translateY(-3px);
-}
-.app__aceso__img .text{
-	position: absolute;
-	z-index: 1600;
-	bottom: 5px;
-	left: 25%;
-	color: white;
-	padding: 3px;
-	border-radius: 9px;
-	background: rgba(0, 0, 0, .3);
-	cursor: pointer;
-}
-.app__aceso__img .text:hover{
-	cursor: pointer;
-}
+
+    /* === CONTENEDOR PRINCIPAL === */
+    .app__aceso {
+      position: fixed;
+      bottom: 50px;
+      left: 50px;
+      height: 160px;
+
+      border-radius: 24px;
+      padding: 20px 24px;
+      background: #e0e5ec;
+      overflow: hidden;
+      transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      z-index: -1000;
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    .app__aceso--mostrar {
+    	width: clamp(340px, 42vw, 650px);
+      z-index: 2000;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* === ESTADO COLAPSADO === */
+    .app__aceso--default {
+      width: 70px;
+      height: 70px;
+      padding: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .app__aceso--default:hover {
+    	cursor: pointer;
+      transform: scale(1.05);
+    }
+
+    .app__aceso--default .cont {
+      opacity: 0;
+      pointer-events: none;
+      width: 0;
+    }
+
+    /* === HEADER === */
+    .aceso__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      opacity: 1;
+      transition: opacity 0.3s;
+    }
+
+    .app__aceso--default .aceso__header {
+      opacity: 0;
+      display: none;
+    }
+
+    .aceso__title {
+      color: #5a6c7d;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .aceso__title i {
+      color: #8b9bad;
+      font-size: 14px;
+    }
+
+    .aceso__badge {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 12px;
+      letter-spacing: 0.5px;
+      box-shadow: 
+        3px 3px 6px rgba(163, 177, 198, 0.4),
+        -1px -1px 3px rgba(255, 255, 255, 0.5);
+    }
+
+    /* === CONTENEDOR DE IMÁGENES === */
+    .cont {
+      display: flex;
+      gap: 18px;
+      height: calc(100% - 40px);
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-behavior: smooth;
+      padding: 8px 4px;
+      opacity: 1;
+      transition: all 0.3s ease;
+    }
+
+    .cont::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .cont::-webkit-scrollbar-track {
+      background: #e0e5ec;
+      border-radius: 10px;
+      box-shadow: inset 2px 2px 4px rgba(163, 177, 198, 0.3);
+    }
+
+    .cont::-webkit-scrollbar-thumb {
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      border-radius: 10px;
+      box-shadow: 
+        2px 2px 4px rgba(163, 177, 198, 0.3),
+        -1px -1px 2px rgba(255, 255, 255, 0.5);
+    }
+
+    /* === ITEMS DE HABITACIÓN === */
+    .app__aceso__img {
+      position: relative;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .app__aceso__img:hover {
+      transform: translateY(-10px);
+    }
+
+    .card-wrapper {
+      position: relative;
+      width: 90px;
+      height: 90px;
+      border-radius: 18px;
+      background: #e0e5ec;
+      padding: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .app__aceso__img:hover .card-wrapper {
+      box-shadow: 
+        10px 10px 20px rgba(163, 177, 198, 0.6),
+        -10px -10px 20px rgba(255, 255, 255, 0.9),
+        inset 1px 1px 2px rgba(163, 177, 198, 0.2),
+        inset -1px -1px 2px rgba(255, 255, 255, 0.5);
+    }
+
+    .app__aceso__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 14px;
+      transition: all 0.3s ease;
+    }
+
+    /* === ETIQUETA DE TEXTO === */
+    .app__aceso__img .text {
+      position: absolute;
+      bottom: -34px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #5a6c7d;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 14px;
+      background: #e0e5ec;
+      box-shadow: 
+        4px 4px 8px rgba(163, 177, 198, 0.5),
+        -4px -4px 8px rgba(255, 255, 255, 0.8);
+      white-space: nowrap;
+      pointer-events: none;
+      letter-spacing: 0.3px;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .app__aceso__img:hover .text {
+      opacity: 1;
+      bottom: -38px;
+    }
+
+    /* Indicador activo */
+    .app__aceso__img.active .card-wrapper {
+      box-shadow: 
+        8px 8px 16px rgba(163, 177, 198, 0.6),
+        -8px -8px 16px rgba(255, 255, 255, 0.9),
+        inset 3px 3px 6px rgba(102, 126, 234, 0.3),
+        inset -3px -3px 6px rgba(118, 75, 162, 0.2);
+    }
+
+    .app__aceso__img.active .card-wrapper::before {
+      content: '✓';
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: bold;
+      box-shadow: 
+        3px 3px 6px rgba(163, 177, 198, 0.5),
+        -2px -2px 4px rgba(255, 255, 255, 0.7);
+      z-index: 10;
+    }
+
+    /* === BOTÓN DE TOGGLE === */
+    .app__aceso__button {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #e0e5ec;
+      border-radius: 50%;
+      color: #667eea;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      box-shadow: 
+        6px 6px 12px rgba(163, 177, 198, 0.5),
+        -6px -6px 12px rgba(255, 255, 255, 0.8);
+    }
+
+    .app__aceso__button:hover {
+      box-shadow: 
+        3px 3px 6px rgba(163, 177, 198, 0.5),
+        -3px -3px 6px rgba(255, 255, 255, 0.8),
+        inset 2px 2px 4px rgba(163, 177, 198, 0.2),
+        inset -2px -2px 4px rgba(255, 255, 255, 0.7);
+      transform: translateY(-50%) scale(0.95);
+    }
+
+    .app__aceso__button:active {
+      box-shadow: 
+        inset 4px 4px 8px rgba(163, 177, 198, 0.5),
+        inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+    }
+
+    .app__aceso__button i {
+      font-size: 18px;
+      transition: transform 0.3s ease;
+      transform: rotate(180deg);
+    }
+
+    .app__aceso--default .app__aceso__button {
+      position: static;
+      transform: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    .app__aceso--default .app__aceso__button:hover {
+      transform: scale(0.95);
+    }
+
+    .app__aceso--default .app__aceso__button i {
+      transform: rotate(0deg);
+      font-size: 24px;
+    }
+
+    /* === OCULTAR ITEMS EN ESTADO COLAPSADO === */
+    .app__aceso--default .app__aceso__img {
+      display: none;
+    }
+
+    /* === ANIMACIÓN DE APARICIÓN === */
+    @keyframes floatIn {
+      0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.8);
+      }
+      60% {
+        transform: translateY(-5px) scale(1.02);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .app__aceso__img {
+      animation: floatIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+      opacity: 0;
+    }
+
+    .app__aceso__img:nth-child(1) { animation-delay: 0.1s; }
+    .app__aceso__img:nth-child(2) { animation-delay: 0.15s; }
+    .app__aceso__img:nth-child(3) { animation-delay: 0.2s; }
+    .app__aceso__img:nth-child(4) { animation-delay: 0.25s; }
+    .app__aceso__img:nth-child(5) { animation-delay: 0.3s; }
+    .app__aceso__img:nth-child(6) { animation-delay: 0.35s; }
 
 
-/* --- scrollbar bonito --- */
-.cont::-webkit-scrollbar {
-  height: 8px;
+    /* === DEMO INFO === */
+    .demo-info {
+      position: fixed;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #e0e5ec;
+      padding: 18px 32px;
+      border-radius: 20px;
+      box-shadow: 
+        8px 8px 16px rgba(163, 177, 198, 0.5),
+        -8px -8px 16px rgba(255, 255, 255, 0.8);
+      text-align: center;
+      font-size: 14px;
+      color: #5a6c7d;
+      z-index: 3000;
+      font-weight: 600;
+    }
+
+    .demo-info strong {
+      color: #667eea;
+      font-weight: 700;
+    }
+
+    /* Efecto de presionar en cards */
+    .app__aceso__img:active .card-wrapper {
+      box-shadow: 
+        inset 4px 4px 8px rgba(163, 177, 198, 0.5),
+        inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+      transform: scale(0.95);
+    }
+
+
+/* === Extra pequeño: Celulares chicos (≤ 480px) === */
+@media (max-width: 480px) {
+	   .app__aceso {
+      bottom:60px;
+      left: 20px;
+      height: 131px;
+      width: clamp(290px, 42vw, 650px);
+
+    }
+     .app__aceso--default {
+        height: 51px;
+        width: 51px;
+     }
+     .card-wrapper{
+     	height: 71px;
+     }
 }
 
-.cont::-webkit-scrollbar-track {
-  background: rgba(200, 200, 200, 0.2);
-  border-radius: 10px;
+/* === Pequeño: Celulares medianos (481px – 768px) === */
+@media (min-width: 481px) and (max-width: 768px) {
+     .app__aceso--default {
+        
+     }
+    .app__aceso {
+      bottom: 110px;
+      left: 50px;
+
+    }
 }
 
-.cont::-webkit-scrollbar-thumb {
-  background: rgba(230, 230, 230, .9);;
-  border-radius: 10px;
+/* === Mediano: Tablets (769px – 1024px) === */
+@media (min-width: 769px) and (max-width: 1024px) {
+     .app__aceso--default {
+        
+     }     
+     .app__aceso {
+      bottom: 110px;
+      left: 90px;
+
+    }
 }
 
-.cont::-webkit-scrollbar-thumb:hover {
-  background: #4f81c7;
+/* === Grande: Laptops (1025px – 1440px) === */
+@media (min-width: 1025px) and (max-width: 1440px) {
+     .app__aceso {
+      height: 141px;
+
+    }
+      .app__aceso--default {
+        height: 51px;
+        width: 51px;
+     }
 }
 
-.app__aceso__button{
-	cursor: pointer;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: absolute;
-	top: 0;
-	right: 0;
-	height: 100%;
-	color: white;
-	transition: 3s linear;
-	background: rgba(0, 0, 0, .2);
-	transition: 0s linear;
-}
-.app__aceso--default .app__aceso__button{
-	position: relative;
-	max-height: auto;
-	background: transparent;
-}
-.app__aceso__button i{
-	transform: rotate(180deg);
-}
- .app__aceso--default .app__aceso__button i{
-	transform: rotate(0deg)
-}
-.app__aceso--default{
-	width: 5px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: white;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    transition: 0s linear;
-}
-.app__aceso--default .cont{
-	transition: 0s linear;
-	padding: 0px;
-}
-.app__aceso--default:hover{
-	cursor: pointer;
-}
-.app__aceso--default .app__aceso__img{
-	display: none;
-}
+/* === Extra grande: Monitores grandes (1441px+) === */
+@media (min-width: 1441px) {
+     .app__aceso--default {
 
-.app__aceso--default .app__aceso__button:hover{
-	transform: scale(1.2);
+     }
+     .app__aceso {
+      bottom: 90px;
+      left: 90px;
+
+    }
+    
 }

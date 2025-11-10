@@ -66,7 +66,7 @@ class ViewerConstructor{
             "scenes": { }
         }
 
-        cuartos.forEach(function(element, index) {
+        this.cuartos.forEach((element, index)=> {
             scenes[`${index}`] = {
                 title: "",
                 hfov: 110,
@@ -139,10 +139,9 @@ class ViewerConstructor{
     }
     viewerFocus(args){
     
-        if(acceso.classList.contains("app__aceso--mostrar")){
-            acceso.classList.remove("app__aceso--mostrar")
-        }
+        acceso.classList.remove("app__aceso--mostrar")
         this.viewer.lookAt(args.pitch, args.yaw, 20, 2500);
+
         boxEnd.classList.add('button--end--active');
         boxCartel.classList.add('box--active');
         boxTitulo.innerText = args.titulo;
@@ -215,10 +214,12 @@ class ViewerConstructor{
         cuartos.forEach((cuarto)=>{
             if(cuarto.id != scena_actual){
                 acceso_cont.insertAdjacentHTML('beforeend', `
-                    <div class="app__aceso__img" data-scena="${cuarto.id}">
-                        <img src="img/cuartos/${cuarto.id}.png"  alt="">
+                    <div class="app__aceso__img " data-scena="${cuarto.id}">
+                        <div class="card-wrapper">
+                            <img src="img/cuartos/${cuarto.id}.png" alt="${cuarto.nombre}">
+                        </div>
                         <span class="text">${cuarto.nombre}</span>
-                    </div> 
+                    </div>
             `);
             }
         })
@@ -237,13 +238,11 @@ let vistaPrinc;
 const main = ()=>{
     vistaPrinc = new ViewerConstructor(modelos, cuartos)
     console.log(vistaPrinc)
-    buttonAcceso.addEventListener("click", (e)=>{
-        if(acceso.classList.contains("app__aceso--default")){
-            acceso.classList.remove("app__aceso--default")
-        }else{
-            acceso.classList.add("app__aceso--default")
-        }
-    })
+        // Toggle expandir/colapsar
+    buttonAcceso.addEventListener('click', (e) => {
+      e.stopPropagation();
+      acceso.classList.toggle('app__aceso--default');
+    });
 }
 main()
 

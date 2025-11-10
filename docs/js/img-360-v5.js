@@ -1,332 +1,288 @@
-const buttonNavegar = document.getElementById("button--navegar")
-const buttonTop = document.getElementById("button--top")
-const boxEnd = document.getElementById("button--end")
-const boxCartel = document.getElementById("box--cartel")
-const latDef = document.getElementById("lat")
-var boxTitulo = boxCartel.querySelector(".box__header__h3")
-var boxDescripcion = boxCartel.querySelector(".box__body__p")
-var lugar = document.querySelector('#viewer');
-var iframe = document.querySelector('#iframe');
+// === ELEMENTOS DEL DOM ===
+const elements = {
+  boxEnd: document.getElementById("button--end"),
+  boxCartel: document.getElementById("box--cartel"),
+  panorama: document.getElementById("panorama"),
+  buttonAcceso: document.getElementById("button-acceso"),
+  consejo: document.getElementById("consejo__span"),
+  acceso: document.getElementById("acceso"),
+  accesoCont: document.getElementById("acceso_cont"),
+  loading: document.getElementById('loading'),
+  progressBar: document.getElementById('progressBar'),
+  progressText: document.getElementById('progressText'),
+  
+  // Carrusel
+  track: document.getElementById('carouselTrack'),
+  indicators: document.getElementById('indicators'),
+  counter: document.getElementById('counter'),
+  prevBtn: document.getElementById('prevBtn'),
+  nextBtn: document.getElementById('nextBtn')
+};
 
-const modelos = {
-	"room1":{
-		"objetos":[
-			{
-				"titulo":"Smart TV 32 pulgadas",
-				"descripcion":`
-					Una tele copada, todos queremos una telesmart, 
-					yo quiero una tele tu quieres una tele, ella quiere una tele, metele wacho
-					mira esta tremenda es de colores y tiene waifai incluido
+// === CONSTANTES ===
+const TIPS = [
+  "Puedes desplazarte arrastrando con el dedo o el mouse",
+  "Haz zoom acercando o alejando con dos dedos o con la rueda del mouse",
+  "Toca los íconos brillantes (orbes) para descubrir información",
+  "Pulsa en las flechas de salida para cambiar de habitación",
+  "En pantallas táctiles, prueba girar el dispositivo para una experiencia más inmersiva",
+  "Algunos objetos contienen enlaces a videos o contenido extra",
+  "Toca el ícono de información para leer más detalles de la escena"
+];
 
-					`,
-				"url":"https://www.youtube.com/embed/2ajWUp8F694?si=XEYk7BVDaDiQmnAD",
-				"minLong":6.19,
-				"maxLong":0.17,
-				"minLat":-0.19,
-				"maxLat":-0.04,
-			},	
-			{
-				"titulo":"2 cosinas de pared",
-				"descripcion":`
-					¿Porque tener una si podes tener 2?
-					No hablo de esposas else cocinas de pared bien copadas,
-					eheh mira aca te haces tremendas comidas
-					comer es eso que hace feliz a la gente
-					Se feliz :)
-				`,
-				"url":"",
-				"minLong":1.51,
-				"maxLong":1.89,
-				"minLat":-0.56,
-				"maxLat":-0.06,
-			},	
-			{
-				"titulo":"cocina electrica",
-				"descripcion":`
-					wacho odio contamintar pero obvio no puedo dejar de hacerlo
-					mejor una cocina electrica que no entiendo la diferencia pero se ve como del futuro
-					eeeaaaaaa
-					bueno eso
+// === CLASE PRINCIPAL ===
+class ViewerConstructor {
+  constructor(modelos, cuartos) {
+    this.cuartos = cuartos;
+    this.modelos = modelos;
+    this.carga = 0;
+    this.currentCarouselIndex = 0;
+    this.carouselLength = 0;
+    
+    this.viewer = pannellum.viewer('panorama', this.crearConfigViewer());
+    
+    this.inicializarEventos();
+    this.actualizarImagenes();
+  }
 
-					no me compres obteneme bv
-				`,
-				"url":"https://www.youtube.com/embed/2ajWUp8F694?si=XEYk7BVDaDiQmnAD",
-				"minLong":3.40, 
-				"maxLong":3.97,
-				"minLat":-0.95,
-				"maxLat":-0.68,
-			},	
-			{
-				"titulo":"Lavadero",
-				"descripcion":`
-					Aca te podes lavar la manos, la cara, los platos
-					y esas cosas, sale agua corriente que podes tomar cuando no pagas el agua
+  crearConfigViewer() {
+    const scenes = {};
+    
+    this.cuartos.forEach((cuarto, index) => {
+      const hotSpots = [
+        ...cuarto.modelos.map(modelo => ({
+          ...modelo,
+          createTooltipFunc: this.crearHotspot.bind(this)
+        })),
+        ...cuarto.salidas
+      ];
 
-					bueno eso tkm, tengo que rellenar mas texto asi que bueno voy a escribir algo mas
-					tambien puedo decir que la vida no es tan mala
-				`,
-				"url":"https://www.youtube.com/embed/2ajWUp8F694?si=XEYk7BVDaDiQmnAD",
-				"minLong":4.69, 
-				"maxLong":4.99,
-				"minLat":-0.56,
-				"maxLat":-0.45,
-			},
-			{
-				"titulo":"Ventana",
-				"descripcion":`
-					Vista a la terraza re copada
-					ondaaaa naaaa pero mira esta vista, te entran mosquitos a la noche pero con un espiral se arregla
-					lo mismo, la ventana es corredisa, tiene una cortina para que no te vean los vecinos
-					y especial para mirar durante las crisis existenciales
-				`,
-				"url":"https://www.youtube.com/embed/2ajWUp8F694?si=XEYk7BVDaDiQmnAD",
-				"minLong":4.45, 
-				"maxLong":5.11,
-				"minLat":-0.34,
-				"maxLat":0.45,
-			},	
-			{
-				"titulo":"Heladera inteligente",
-				"descripcion":`
-					esta es como una heladera... pero no cualquier heladera, esta tiene algo de diferente, especial...
-					bueno eso... te sirve para mas cosas... como nc soy pobre no tengo una de esas en mi casa
-					¡pero ey!
-					En el titulo dice inteligente, onda debe ser mejor 
-				`,
-				"url":"https://www.youtube.com/embed/2ajWUp8F694?si=XEYk7BVDaDiQmnAD",
-				"minLong":0.94, 
-				"maxLong":1.45,
-				"minLat":-0.55,
-				"maxLat":-0.22,
-			},	
-			{
-				"titulo":"Limones... ",
-				"descripcion":`
-					Limones... ¿porque no limones? onda... son limones :D
-					todos aman los limones
-					ella ama los limones
-					Come estos limones y ella te va a amar...
-
-				`,
-				"url":"https://www.youtube.com/embed/2ajWUp8F694?si=XEYk7BVDaDiQmnAD",
-				"minLong":2.78, 
-				"maxLong":3.11,
-				"minLat":-0.91,
-				"maxLat":-0.73,
-			}
-		],
-		"salidas":[
-			{		
-				"cuartoId":1,
-				"minLong":0.68,
-				"maxLong":0.90,
-				"minLat":-0.49,
-				"maxLat":-0.10,
-			},	
-		],
-	},
-	"room2":{
-		"objetos":[
-			{
-				"titulo":"RELOS GIGANTE",
-				"descripcion":`
-					Una reloj copada, todos queremos un reloj, 
-					yo quiero un reloj tu quieres una reloj, ella quiere una reloj, metele wacho
-					mira esta tremenda es de colores y tiene waifai incluido
-
-					`,
-				"url":"",
-				"minLong":5,
-				"maxLong":0.4,
-				"minLat":-0.06,
-				"maxLat":0.6,
-			},
-		],
-		"salidas":[
-			{		
-			"cuartoId":0,
-			"minLong":0.70,
-			"maxLong":1.01,
-			"minLat":-0.32,
-			"maxLat":0.11,
-			},
-		]
-	}
-}
-const cuartos = [
-	{
-		"id":0,
-		"url":"https://www.luofluck.tech/360/1.jpg",
-		"modelos":modelos.room1.objetos,
-		"salidas":modelos.room1.salidas,
-
-	},
-	{
-		"id":1,
-		"url":"https://www.luofluck.tech/360/2.jpg",
-		"modelos":modelos.room2.objetos,
-		"salidas":modelos.room2.salidas
-	}
-]
-
-
-class ViewerConstructor{
-	constructor(modelosObj) {
-		this.cuartos = cuartos;
-	    this.viewerUrl = modelosObj.url;
-	    this.modelosObj = modelosObj.modelos;
-	    this.modelosDir = modelosObj.salidas;
-	    this.boxEnd = boxEnd;
-	    this.viewer = this.createdViewer();
-	}
-	createdViewer(){
-		lugar.innerHTML = "";
-			this.viewer = new PhotoSphereViewer.Viewer({
-				container: lugar,
-				panorama: this.viewerUrl,
-				defaultLat: 0,
-				defaultLong: 0,
-				defaultZoomLvl: 0,
-				mousemove: true,
-				mousewheel: true,
-				navbar: null,
-				loadingTxt: "NEXT",
-				
-			});
-			console.log(this.viewer)
-			this.viewerClic();
-			this.viewerExit();
-			this.viewerMouse();
-			let punto = this.viewer.point(0,0)
-			console.log(punto)
-			return this.viewer;
-		try{
-			
-
-		}
-		catch{
-			return console.log("error");
-		}
-	}
-	viewerNormalize(){
-		buttonTop.style.display = 'block'
-		boxEnd.classList.remove("button--end--active");
-		boxCartel.classList.remove("box--active");
-		this.viewer.config.mousewheel = true;
-	 	this.viewer.config.mousemove = true;
-	 	new PhotoSphereViewer.utils.Animation({
-	  	properties: {
-	      zoom: { start: 75, end: 0 },
-	    },
-	    duration: 1000,
-	    onTick: (properties) => {
-	      this.viewer.zoom(properties.zoom);
-	    }
-	  });
-	}
-	viewerFocus(longitude, latitude, element){
-		buttonTop.style.display = 'none'
-		this.viewer.config.mousewheel = false;
-		this.viewer.config.mousemove = false;
-	 	this.viewer.renderer.camera.far *= 2;
-		let ob = this.viewer.getPosition()
-		new PhotoSphereViewer.utils.distance()
-		console.log("llego aqui")
-		new PhotoSphereViewer.utils.Animation({
-		    properties: {
-		     	lat: { start: ob.latitude, end: latitude },
-		     	long: { start: ob.longitude, end: longitude },
-		     	zoom: { start: this.viewer.getZoomLevel(), end: 75 },
-		    },
-		    duration: 1000,
-		    onTick: (properties) => {
-		     	this.viewer.rotate({ longitude: properties.long, latitude: properties.lat });
-		     	this.viewer.zoom(properties.zoom);
-		    }
-	  	});
-		boxEnd.classList.add('button--end--active');
-		boxCartel.classList.add('box--active');
-
-		boxTitulo.innerText = element.titulo;
-		boxDescripcion.innerText = element.descripcion;
-		
-		if(element.url!=""){
-			iframe.src = element.url;
-			iframe.classList.add('box__body__iframe--active');
-		}else{
-			iframe.classList.remove('box__body__iframe--active');
-		}
-	}
-	viewerClic(){
-		this.viewer.on('click', (e, data) => {
-			console.log(data)
-			let ob = this.viewer.getPosition()
-			latDef.innerText=`
-			    click:
-			    x: ${data.longitude} 
-			    y: ${data.latitude}
-			    pantalla:
-			    x: ${data.viewerX}
-			    y: ${data.viewerY}
-			`
-		    this.longitude = data.longitude;
-		    this.latitude = data.latitude;
-			this.modelosObj.forEach((element)=>{
-				if(this.viewerlogAndLatVal(element)) this.viewerFocus(this.longitude, this.latitude, element);
-		  	})	
-		  	this.modelosDir.forEach((element)=>{
-				if(this.viewerlogAndLatVal(element)){
-					console.log(cuartos[element.cuartoId])
-					//this.viewer.destroy()
-					const sala = new ViewerConstructor(cuartos[element.cuartoId])
-					/*this.viewer.setPanorama('https://www.luofluck.tech/360/2.jpg').then(() => 
-						console.log('vista cambiada')
-					);*/
-				}
-		  	})
-		});
-	}
-	viewerMouse(){
- 		
-		this.viewer.on('position-updated', (e, data) => {
-			console.log(data)
-  			let ob = this.viewer.getPosition()
-			latDef.innerText=`
-			    Vista:
-			        x: ${ob.longitude} 
-			        y: ${ob.latitude}
-			    click:
-			    x: ${data.longitude} 
-			    y: ${data.latitude}
-			`
-			console.log("clic: ", ob);
-		})
-	}
-	viewerlogAndLatVal(element){
-		//capaz en un futuro cercano no entienda que hize aca asi que abajo una pequeña descripcion;
-		let minLong = element["minLong"]
-		let maxLong = element["maxLong"]  	
-		let minLat = element["minLat"]
-		let maxLat = element["maxLat"]
-		let log = (maxLong < minLong)? maxLong > this.longitude  || minLong < this.longitude: maxLong > this.longitude && minLong < this.longitude;
-		let lat = maxLat > this.latitude && minLat < this.latitude;
-		return (log && lat) 
-	}
-	viewerExit(){
-		boxEnd.addEventListener("click", ()=> this.viewerNormalize()) 
-		//ola
-	}
-}
-const main = ()=>{
-	const vistaPrinc = new ViewerConstructor(cuartos[0])
-}
-main()
-    buttonNavegar.addEventListener("click",e=>{
-	    lugar.classList.add("image--mostrar");
+      scenes[index] = {
+        title: "",
+        hfov: 110,
+        pitch: 0,
+        yaw: 0,
+        type: "equirectangular",
+        panorama: cuarto.url,
+        hotSpots
+      };
     });
-    buttonTop.addEventListener("click",e=>{
-	lugar.classList.remove("image--mostrar");
-})
+
+    return {
+      default: {
+        firstScene: this.cuartos[0].id,
+        sceneFadeDuration: 1000,
+        autoLoad: true,
+        showControls: false
+      },
+      scenes
+    };
+  }
+
+  // === LOADING ===
+  mostrarLoading() {
+    elements.loading.classList.remove("hidden");
+    this.carga = 0;
+    this.actualizarProgreso();
+    
+    const randomTip = () => TIPS[Math.floor(Math.random() * TIPS.length)];
+    elements.consejo.textContent = randomTip();
+    
+    const intervalConsejo = setInterval(() => {
+      elements.consejo.textContent = randomTip();
+    }, 3000);
+    
+    const intervalProgreso = setInterval(() => {
+      this.carga += Math.random() * 7;
+      if (this.carga > 95) this.carga = 95;
+      
+      this.actualizarProgreso();
+      
+      if (this.viewer.isLoaded()) {
+        clearInterval(intervalProgreso);
+        clearInterval(intervalConsejo);
+        this.ocultarLoading();
+      }
+    }, 400);
+  }
+
+  actualizarProgreso() {
+    const progreso = Math.round(this.carga);
+    elements.progressBar.style.width = `${progreso}%`;
+    elements.progressText.textContent = `${progreso}%`;
+  }
+
+  ocultarLoading() {
+    elements.progressBar.style.width = "100%";
+    elements.progressText.textContent = "100%";
+    elements.panorama.classList.add("cargado");
+    elements.acceso.classList.add("app__aceso--mostrar");
+    
+    setTimeout(() => {
+      elements.loading.classList.add("hidden");
+    }, 300);
+  }
+
+  // === VIEWER ===
+  enfocarViewer(args) {
+    elements.acceso.classList.remove("app__aceso--mostrar");
+    this.viewer.lookAt(args.pitch, args.yaw, 20, 2500);
+    
+    elements.boxEnd.classList.add('button--end--active');
+    elements.boxCartel.classList.add('box--active');
+    elements.boxCartel.querySelector(".box__header__h3").innerText = args.titulo;
+    
+    this.crearCarrusel(args.url);
+  }
+
+  normalizarViewer() {
+    document.querySelectorAll(".custom-hotspot--desactive")
+      .forEach(el => el.classList.remove("custom-hotspot--desactive"));
+    
+    elements.acceso.classList.add("app__aceso--mostrar");
+    elements.boxEnd.classList.remove("button--end--active");
+    elements.boxCartel.classList.remove("box--active");
+    
+    const pitch = this.viewer.getPitch();
+    const yaw = this.viewer.getYaw();
+    this.viewer.lookAt(pitch, yaw, 120, 2500);
+    
+    elements.track.innerHTML = "";
+  }
+
+  // === CARRUSEL ===
+  crearCarrusel(videos) {
+    this.carouselLength = videos.length;
+    this.currentCarouselIndex = 0;
+    
+    elements.track.innerHTML = "";
+    elements.indicators.innerHTML = "";
+    
+    videos.forEach((video, index) => {
+      // Crear item de video
+      const div = document.createElement("div");
+      div.className = "video-item";
+      
+      const titulo = document.createElement("h3");
+      titulo.textContent = video.titulo;
+      
+      const iframe = document.createElement("iframe");
+      iframe.src = video.link;
+      iframe.allowFullscreen = true;
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+      
+      div.append(titulo, iframe);
+      elements.track.appendChild(div);
+      
+      // Crear indicador
+      const indicator = document.createElement("div");
+      indicator.className = `indicator${index === 0 ? ' active' : ''}`;
+      indicator.addEventListener("click", () => this.irASlide(index));
+      elements.indicators.appendChild(indicator);
+    });
+    
+    this.actualizarCarrusel();
+  }
+
+  actualizarCarrusel() {
+    elements.track.style.transform = `translateX(-${this.currentCarouselIndex * 100}%)`;
+    elements.counter.textContent = `${this.currentCarouselIndex + 1} / ${this.carouselLength}`;
+    
+    document.querySelectorAll('.indicator').forEach((ind, i) => {
+      ind.classList.toggle('active', i === this.currentCarouselIndex);
+    });
+  }
+
+  irASlide(index) {
+    this.currentCarouselIndex = index;
+    this.actualizarCarrusel();
+  }
+
+  siguienteSlide() {
+    this.currentCarouselIndex = (this.currentCarouselIndex + 1) % this.carouselLength;
+    this.actualizarCarrusel();
+  }
+
+  anteriorSlide() {
+    this.currentCarouselIndex = (this.currentCarouselIndex - 1 + this.carouselLength) % this.carouselLength;
+    this.actualizarCarrusel();
+  }
+
+  // === ESCENAS ===
+  actualizarImagenes() {
+    const escenaActual = this.viewer.getScene();
+    elements.accesoCont.innerHTML = "";
+    
+    this.cuartos
+      .filter(cuarto => cuarto.id !== escenaActual)
+      .forEach(cuarto => {
+        const html = `
+          <div class="app__aceso__img" data-scena="${cuarto.id}">
+            <img src="img/cuartos/${cuarto.id}.png" alt="">
+            <span class="text">${cuarto.nombre}</span>
+          </div>
+        `;
+        elements.accesoCont.insertAdjacentHTML('beforeend', html);
+      });
+    
+    document.querySelectorAll(".app__aceso__img").forEach(imagen => {
+      imagen.addEventListener("click", () => {
+        this.viewer.loadScene(imagen.dataset.scena);
+      });
+    });
+  }
+
+  // === HOTSPOT ===
+  crearHotspot(hotSpotDiv, args) {
+    const pulse = document.createElement("div");
+    pulse.classList.add('pulse');
+    
+    hotSpotDiv.classList.add('custom-tooltip');
+    hotSpotDiv.appendChild(pulse);
+    
+    hotSpotDiv.addEventListener("click", () => {
+      hotSpotDiv.classList.add('custom-hotspot--desactive');
+      this.enfocarViewer(args);
+    });
+  }
+
+  // === EVENTOS ===
+  inicializarEventos() {
+    // Click en viewer
+    this.viewer.on("mousedown", (event) => {
+      const coords = this.viewer.mouseEventToCoords(event);
+      console.log(`Click -> Pitch: ${coords[0]}, Yaw: ${coords[1]}`);
+    });
+    
+    // Cambio de escena
+    this.viewer.on("scenechange", (sceneId) => {
+      console.log("Cambiando a escena:", sceneId);
+      this.mostrarLoading();
+      this.actualizarImagenes();
+    });
+    
+    // Botón cerrar
+    elements.boxEnd.addEventListener("click", () => this.normalizarViewer());
+    
+    // Carrusel
+    elements.prevBtn.addEventListener('click', () => this.anteriorSlide());
+    elements.nextBtn.addEventListener('click', () => this.siguienteSlide());
+  }
+}
+
+// === INICIALIZACIÓN ===
+let vistaPrinc;
+
+function main() {
+  vistaPrinc = new ViewerConstructor(modelos, cuartos);
+  
+  elements.buttonAcceso.addEventListener("click", () => {
+    elements.acceso.classList.toggle("app__aceso--default");
+  });
+}
+
+main();
+
 /*
 				La onda es simple hoy me entere que voy a ser tio ahr que tenia que ver 
 				(10:31pm - 16/04/2022)
