@@ -100,68 +100,49 @@ body{
 .custom-exit{
 }
 .triangulo-1, .triangulo-2 {
-    position: relative;
+    margin: 3px;
     width: 60px;
-    height: 19px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 1s liner ;
-    animation: exit 3s ease-in-out infinite;
-
-    filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.9));
+    height: 14px; 
+    position: relative;
+    z-index: 1;
+    background:rgba(150, 150, 150, 0.9);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    box-shadow: 0 0 10px rgba(255,255,255,0.7), 0 0 20px rgba(255,255,255,0.4);
+    animation: float-anim 3s ease-in-out infinite;
+    box-shadow: 
+        0 0 40px rgba(255, 255, 255, 0.3),
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+    filter: brightness(1.2);
 }
-
 .triangulo-1::before, .triangulo-2::before {
-    content: "";
-    width: 0;
-    height: 0;
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    border-bottom: 13.6px solid rgba(255, 255, 255, .8);
-    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 50px rgba(0, 0, 0, 0.9));
-}
-
-.triangulo-1::after, .triangulo-2::after {
-    content: "";
+    content: '';
     position: absolute;
-    width: 0;
-    height: 0;
-    border-left: 54px solid transparent;
-    border-right: 54px solid transparent;
-    border-bottom: 15.5px solid rgba(128, 128, 128, 1);
-    z-index: -1;
-    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4));
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 60px;
+    height: 13px; 
+    background: linear-gradient(180deg, #e0e0e0, #757575);
+    clip-path: polygon(50% 10%, 5% 100%, 95% 100%);
+    animation: shimmer 3s ease-in-out infinite;
+    z-index: -2;
 }
-.custom-exit::before, .custom-exit::after{
- 
-}
-.custom-exit:hover::before {
-    border-bottom-color: rgba(0, 0, 0, .3);
-    filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.6));
-    transform: translateX(-50%) translateY(-3px);
-}
-
-.custom-exit:hover::after {
-    border-bottom-color: rgba(0, 0, 0, .3);
-
-    transform: translateX(-50%) translateY(-3px);
-}
-
-.custom-exit:active::before,
-.custom-exit:active::after {
-    transform: translateX(-50%) translateY(0) scale(0.95);
+/* Definición de la animación */
+@keyframes float-anim {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25);
+  }
 }
 
-@keyframes exit {
 
-        0%, 0% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(5px);
-    }
-}
+
 @keyframes pulse {
     0%, 100% {
         filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.3))
@@ -204,32 +185,12 @@ body{
 @media (max-width: 480px) {
 
 
-    .triangulo-1::before, .triangulo-2::before {
-        border-left: 31px solid transparent;
-        border-right: 31px solid transparent;
-        border-bottom: 8px solid rgba(255, 255, 255, .8);
-    }
 
-    .triangulo-1::after, .triangulo-2::after {
-        border-left: 34px solid transparent;
-        border-right: 34px solid transparent;
-        border-bottom: 11px solid rgba(128, 128, 128, 1);
-    }
 }
 
 /* === Pequeño: Celulares medianos (481px – 768px) === */
 @media (min-width: 481px) and (max-width: 768px) {
-    .triangulo-1::before, .triangulo-2::before {
-        border-left: 34px solid transparent;
-        border-right: 34px solid transparent;
-        border-bottom: 9px solid rgba(255, 255, 255, .8);
-    }
 
-    .triangulo-1::after, .triangulo-2::after {
-        border-left: 37px solid transparent;
-        border-right: 37px solid transparent;
-        border-bottom: 12px solid rgba(128, 128, 128, 1);
-    }
 }
 
 /* === Mediano: Tablets (769px – 1024px) === */
