@@ -15,9 +15,9 @@ const modelos = {
                         {"titulo": "Sentadilla", "link": "https://www.youtube.com/embed/vAlQMTTmalE"}, 
                         {"titulo": "Press de Banca Plano", "link": "https://www.youtube.com/embed/pijIaN_OOfk"}, 
                         {"titulo": "Press Militar (Hombro)", "link": "https://www.youtube.com/embed/ORvcK_OuTK0"}, 
-                        {"titulo": "Sentadilla Frontal", "link": "https://www.youtube.com/embed/v2lq0AWe3iY"}, 
+                        {"titulo": "Sentadilla Frontal", "link": "https://www.youtube.com/embed/0Vh44WrziWM"}, 
                         {"titulo": "Zancadas (Lunges)", "link": "https://www.youtube.com/embed/sC_XTQqo780"}, 
-                    ],
+                    ], 
                     "pitch": -6.04,
                     "yaw": -120.19,
                 }
@@ -81,8 +81,8 @@ const modelos = {
         "salidas":[
             {       
                 "id":0,
-                "pitch": 2.95,
-                "yaw": -83.60,
+                "pitch": -5.08,
+                "yaw": -80.07,
                 "type": "scene",
                 "sceneId": "1",
                 "cssClass": "custom-exit",
@@ -103,15 +103,15 @@ const modelos = {
                 "titulo": "Técnica Correcta", "link": "https://www.youtube.com/embed/gRVjAtPip0Y" 
             },
             { 
-                "titulo": "Errores Comunes", "link": "https://www.youtube.com/embed/qEwKCR5JCog" 
+                "titulo": "Errores Comunes", "link": "https://www.youtube.com/embed/gS5KGm4wp1g" 
             },
             { 
-                "titulo": "Cómo hacer el 'Set Up'", "link": "https://www.youtube.com/embed/3YvfRx31xDE" 
+                "titulo": "Con Mancuernas", "link": "https://www.youtube.com/embed/rIfrdmAS04c" 
             }
         ],
         "pitch": -15.65,
         "yaw": 12.49
-    }
+    },
 },
 
             {
@@ -122,9 +122,9 @@ const modelos = {
                     "titulo": "Press Banca Inclinado",
                     "descripcion": "Variante del press de banca que enfatiza la porción superior (clavicular) del pectoral, así como los deltoides anteriores.",
                     "url": [
-                        { "titulo": "Técnica (Barra)", "link": "https://www.youtube.com/embed/0G2_XV7slIg" },
-                        { "titulo": "Errores a Evitar", "link": "https://www.youtube.com/embed/HYv_MxYohmQ" },
-                        { "titulo": "Técnica (Mancuernas)", "link": "https://www.youtube.com/embed/8iPEnn-ltC8" }
+                        { "titulo": "Técnica (Mancuernas)", "link": "https://www.youtube.com/embed/0G2_XV7slIg" },
+                        { "titulo": "Errores a Evitar", "link": "https://www.youtube.com/embed/MkMf308jXww" },
+                        { "titulo": "Técnica (Barra)", "link": "https://www.youtube.com/embed/-vYzoCo9VRU?si=gABsyHzkjetpYVZ0" }
                     ],
                     "pitch": -24.39,
                     "yaw": 88.66
@@ -134,8 +134,8 @@ const modelos = {
         "salidas":[
             {       
                 "id":1,
-                "pitch": -8.27,
-                "yaw":  53.44,
+                "pitch":  -16.25,
+                "yaw":  -33.28,
                 "type": "scene",
                 "cssClass": "custom-exit",
                 "text": "",
