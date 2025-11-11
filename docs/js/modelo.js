@@ -81,7 +81,7 @@ const modelos = {
         "salidas":[
             {       
                 "id":0,
-                "pitch": -5.08,
+                "pitch": -1.08,
                 "yaw": -80.07,
                 "type": "scene",
                 "sceneId": "1",

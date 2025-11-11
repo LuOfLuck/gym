@@ -49,6 +49,7 @@ class ViewerConstructor{
         this.viewerClic()
         this.viewerExit()
         this.changeEscena()
+        
         this.intervar = null;
     }
 
@@ -116,6 +117,7 @@ class ViewerConstructor{
                 clearInterval(intervar);
                 clearInterval(intervalConsejo);
                 this.hideLoading();
+                
             }
             
   
@@ -129,6 +131,8 @@ class ViewerConstructor{
         setTimeout(() => {
             loadingEl.classList.add("hidden");
         }, 300);
+        console.log("entro")
+        this.actualizarExit()
     }
     viewerClic(){
         this.viewer.on("mousedown", (event) => {
@@ -229,6 +233,22 @@ class ViewerConstructor{
                 imagen.addEventListener("click", ()=>{
                 this.viewer.loadScene(imagen.dataset.scena);
             })
+        })
+    }
+    actualizarExit(){
+        let exits = document.querySelectorAll(".custom-exit");
+        const div1 = document.createElement("div");
+        div1.className = "triangulo-1";
+        const div2 = document.createElement("div");
+        div2.className = "triangulo-2";
+        console.log("ol", exits)
+        exits.forEach((exit)=>{
+            console.log(exit, div1, div2)
+            console.log("cantidad: ", exit.children.length )
+            if (exit.children.length < 2) {
+                exit.appendChild(div1);
+                exit.appendChild(div2);
+            }
         })
     }
 
