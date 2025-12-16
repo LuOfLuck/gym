@@ -38,28 +38,23 @@ const tips = [
 
 window.irEscenaConZoom = function(evento, args){
     console.log("Iniciando transición a:", args.id);
-    
+    console.log(args)
     // CORRECCIÓN: Usar vistaPrinc.viewer en lugar de vistaPrinc solo
     var pViewer = vistaPrinc.viewer; 
-    
-    // Obtenemos el campo de visión actual
-    var currentHfov = pViewer.getHfov();
-    var currentPitch = pViewer.getPitch();
-    var currentYaw = pViewer.getYaw();
     var container = document.getElementById('panorama'); // Capturamos el div
 
 
     // 3. Esperar y cambiar escen
     // Paso 1: Zoom in rápido
     // Mantenemos el mismo Pitch y Yaw, pero cerramos el FOV a 60 (zoom in)
-    pViewer.lookAt(currentPitch, currentYaw, 60, 1500);
+    pViewer.lookAt(args.pitch, args.yaw, 20, 1000);
     // ¡Agregamos la clase aquí!
     container.classList.add('en-movimiento');
 
     // Paso 2: Esperamos y cambiamos
     setTimeout(function() {
         pViewer.loadScene(args.id);
-    }, 300); 
+    }, 900); 
 }
 const consejos = ["Puedes "]
 class ViewerConstructor{
