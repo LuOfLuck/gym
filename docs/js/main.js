@@ -37,7 +37,26 @@ const tips = [
 ];
 
 
+window.irEscenaConZoom = function(evento, args){
+    console.log("Iniciando transición a:", args.id);
+    
+    // CORRECCIÓN: Usar vistaPrinc.viewer en lugar de vistaPrinc solo
+    var pViewer = vistaPrinc.viewer; 
+    
+    // Obtenemos el campo de visión actual
+    var currentHfov = pViewer.getHfov();
+    var currentPitch = pViewer.getPitch();
+    var currentYaw = pViewer.getYaw();
+    
+    // Paso 1: Zoom in rápido
+    // Mantenemos el mismo Pitch y Yaw, pero cerramos el FOV a 60 (zoom in)
+    pViewer.lookAt(currentPitch, currentYaw, 60, 1000);
 
+    // Paso 2: Esperamos y cambiamos
+    setTimeout(function() {
+        pViewer.loadScene(args.id);
+    }, 500); 
+}
 const consejos = ["Puedes "]
 class ViewerConstructor{
     constructor(modelos, cuartos) {
@@ -61,6 +80,7 @@ class ViewerConstructor{
             "default": {
                 "firstScene": cuartos[0].id,
                 "sceneFadeDuration": 1000,
+                "showLoader": false,
                 "autoLoad": true,
                 "showControls": false,
             },
@@ -83,7 +103,15 @@ class ViewerConstructor{
                 objetos.push(e)
             })
             element.salidas.forEach((e, i)=>{
-                objetos.push(e)
+                let salidaProcesada = { ...e };
+
+                // Si clickHandlerFunc es un TEXTO, buscamos la función real en window
+                if (typeof e.clickHandlerFunc === 'string') {
+                    console.log(e.clickHandlerFunc)
+                    salidaProcesada.clickHandlerFunc = window[e.clickHandlerFunc];
+                    console.log(window[e.clickHandlerFunc])
+                }
+                objetos.push(salidaProcesada)
             })
             scenes[`${index}`].hotSpots = objetos
         });
@@ -131,7 +159,6 @@ class ViewerConstructor{
         setTimeout(() => {
             loadingEl.classList.add("hidden");
         }, 300);
-        console.log("entro")
         this.actualizarExit()
     }
     viewerClic(){
@@ -156,10 +183,8 @@ class ViewerConstructor{
         currentIndex= 0;
         track.style.transform = `translateX(-${currentIndex * 100}%)`;
         counter.textContent = `${currentIndex + 1} / ${length}`;
-        
-        console.log(args.url)
         args.url.forEach((video, index) => {
-         const div = document.createElement("div");
+            const div = document.createElement("div");
             div.className = "video-item";
             
             const titulo = document.createElement("h3");
@@ -192,7 +217,6 @@ class ViewerConstructor{
         let yaw   = vistaPrinc.viewer.getYaw();   
         this.viewer.lookAt(pitch, yaw, 120, 2500);
         track.innerHTML="";
-   
     }
     viewerExit(){
         boxEnd.addEventListener("click", ()=> this.viewerNormalize()) 
@@ -206,14 +230,18 @@ class ViewerConstructor{
     }
     changeEscena(){
         this.viewer.on("scenechange",(sceneId)=>{
-            console.log("Cambiando a escena:", sceneId);;
+            console.log("Cambiando a escena:", sceneId);
             this.loadViewer();
             this.actualizarImagenes();
         })
     }
+    preCargarImagen(urlImagen) {
+        var img = new Image();
+        img.src = urlImagen;
+        console.log(img)
+    }
     actualizarImagenes(){
         let scena_actual = this.viewer.getScene();
-        console.log(scena_actual)
         acceso_cont.innerHTML = "";
         cuartos.forEach((cuarto)=>{
             if(cuarto.id != scena_actual){
@@ -228,12 +256,31 @@ class ViewerConstructor{
             }
         })
         let imagenes = document.querySelectorAll(".app__aceso__img");
-        console.log(imagenes)
         imagenes.forEach((imagen)=>{
                 imagen.addEventListener("click", ()=>{
                 this.viewer.loadScene(imagen.dataset.scena);
             })
         })
+        var escenaActualId = this.viewer.getScene();
+        var config = this.viewer.getConfig();
+        var escenaActual = config.scenes[escenaActualId];
+        console.log(escenaActual.hotSpots)
+        if(escenaActual.hotSpots) {
+            escenaActual.hotSpots.forEach((spot)=> {
+            // 3. Si el hotspot lleva a otra escena (usando tu lógica personalizada o sceneId)
+            // Nota: Aquí asumimos que pasas el ID de la escena en 'clickHandlerArgs' como vimos antes
+            if (spot.clickHandlerArgs && spot.clickHandlerArgs.id) {
+                var siguienteEscenaId = spot.clickHandlerArgs.id;
+                if(config.scenes[siguienteEscenaId]){
+                    var urlSiguienteImagen = config.scenes[siguienteEscenaId].panorama;
+                    
+                    // 4. ¡Descargar esa imagen ya mismo!
+                    console.log("Pre-cargando fondo para: " + siguienteEscenaId);
+                    this.preCargarImagen(urlSiguienteImagen);
+                }
+            }
+        });
+    }
     }
     actualizarExit(){
         let exits = document.querySelectorAll(".custom-exit");
@@ -241,10 +288,7 @@ class ViewerConstructor{
         div1.className = "triangulo-1";
         const div2 = document.createElement("div");
         div2.className = "triangulo-2";
-        console.log("ol", exits)
         exits.forEach((exit)=>{
-            console.log(exit, div1, div2)
-            console.log("cantidad: ", exit.children.length )
             if (exit.children.length < 2) {
                 exit.appendChild(div1);
                 exit.appendChild(div2);
@@ -257,11 +301,9 @@ class ViewerConstructor{
 let vistaPrinc;
 const main = ()=>{
     vistaPrinc = new ViewerConstructor(modelos, cuartos)
-    console.log(vistaPrinc)
-        // Toggle expandir/colapsar
     buttonAcceso.addEventListener('click', (e) => {
-      e.stopPropagation();
-      acceso.classList.toggle('app__aceso--default');
+        e.stopPropagation();
+        acceso.classList.toggle('app__aceso--default');
     });
 }
 main()
@@ -279,7 +321,8 @@ function hotspot(hotSpotDiv, args) {
     });
 }
 
-  function updateCarousel() {
+
+function updateCarousel() {
             track.style.transform = `translateX(-${currentIndex * 100}%)`;
             counter.textContent = `${currentIndex + 1} / ${length}`;
             

@@ -84,36 +84,38 @@ const modelos = {
                 "pitch": -1.08,
                 "yaw": -80.07,
                 "type": "scene",
-                "sceneId": "1",
+                //"sceneId": "1",
                 "cssClass": "custom-exit",
+                "clickHandlerFunc": "irEscenaConZoom",
+                "clickHandlerArgs": { "id": "1" }
+
             },  
         ],
     },
     "house":{
         "objetos":[
-{
-    "pitch": -15.65,
-    "yaw": 12.49,
-    "cssClass": "custom-hotspot",
-    "createTooltipArgs": {
-        "titulo": "Press Banca (Plano)",
-        "descripcion": "Ejercicio fundamental para el desarrollo del pecho (pectoral mayor), tríceps y deltoides anterior. Se realiza en un banco plano.",
-        "url": [
-            { 
-                "titulo": "Técnica Correcta", "link": "https://www.youtube.com/embed/gRVjAtPip0Y" 
+            {
+                "pitch": -15.65,
+                "yaw": 12.49,
+                "cssClass": "custom-hotspot",
+                "createTooltipArgs": {
+                    "titulo": "Press Banca (Plano)",
+                    "descripcion": "Ejercicio fundamental para el desarrollo del pecho (pectoral mayor), tríceps y deltoides anterior. Se realiza en un banco plano.",
+                    "url": [
+                        { 
+                            "titulo": "Técnica Correcta", "link": "https://www.youtube.com/embed/gRVjAtPip0Y" 
+                        },
+                        { 
+                            "titulo": "Errores Comunes", "link": "https://www.youtube.com/embed/gS5KGm4wp1g" 
+                        },
+                        { 
+                            "titulo": "Con Mancuernas", "link": "https://www.youtube.com/embed/rIfrdmAS04c" 
+                        }
+                    ],
+                    "pitch": -15.65,
+                    "yaw": 12.49
+                },
             },
-            { 
-                "titulo": "Errores Comunes", "link": "https://www.youtube.com/embed/gS5KGm4wp1g" 
-            },
-            { 
-                "titulo": "Con Mancuernas", "link": "https://www.youtube.com/embed/rIfrdmAS04c" 
-            }
-        ],
-        "pitch": -15.65,
-        "yaw": 12.49
-    },
-},
-
             {
                 "pitch": -24.39,
                 "yaw": 88.66,
@@ -138,8 +140,9 @@ const modelos = {
                 "yaw":  -33.28,
                 "type": "scene",
                 "cssClass": "custom-exit",
-                "text": "",
-                "sceneId": "0"
+                //"sceneId": "0",
+                "clickHandlerFunc": "irEscenaConZoom",
+                "clickHandlerArgs": { "id": "0" },
             },  
         ],
     },

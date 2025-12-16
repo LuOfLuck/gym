@@ -1,15 +1,18 @@
-
+.pnlm-load-box {
+    display: none !important;
+}
 .fondo{
     background-image: url("fondo.png");
     width: 100vw;
     height: 100vh;
     z-index: 50;
+    display: none;
 }
  .loading-overlay {
     z-index: 100;
     position: absolute;
     inset: 0;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     flex-direction: column;
