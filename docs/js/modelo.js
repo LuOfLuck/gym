@@ -87,7 +87,11 @@ const modelos = {
                 //"sceneId": "1",
                 "cssClass": "custom-exit",
                 "clickHandlerFunc": "irEscenaConZoom",
-                "clickHandlerArgs": { "id": "1" }
+                "clickHandlerArgs": { 
+                    "id": "1",
+                    "pitch": -1.08,
+                    "yaw": -80.07,
+                }
 
             },  
         ],
@@ -142,7 +146,11 @@ const modelos = {
                 "cssClass": "custom-exit",
                 //"sceneId": "0",
                 "clickHandlerFunc": "irEscenaConZoom",
-                "clickHandlerArgs": { "id": "0" },
+                "clickHandlerArgs": {
+                    "id": "0",
+                    "pitch":  -16.25,
+                    "yaw":  -33.28,
+                },
             },  
         ],
     },
