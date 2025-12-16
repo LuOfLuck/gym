@@ -151,7 +151,8 @@ const cuartos = [
     {
         "id":"0",
         "nombre": "Sala 1",
-        "url":"https://www.luofluck.tech/360/8-min.jpeg",
+        //"url":"https://www.luofluck.tech/360/8-min.jpeg",
+        "url":"https://www.luofluck.tech/360/1.jpg",
         "modelos":modelos.circle.objetos,
         "salidas":modelos.circle.salidas,
 
@@ -159,7 +160,8 @@ const cuartos = [
     {
         "id":"1",
         "nombre": "Sala 2",
-        "url":"https://www.luofluck.tech/360/7-min.jpeg",
+        //"url":"https://www.luofluck.tech/360/7-min.jpeg",
+        "url":"https://www.luofluck.tech/360/2.jpg",
         "modelos":modelos.house.objetos,
         "salidas":modelos.house.salidas,
     },
