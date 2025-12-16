@@ -1,3 +1,14 @@
+/* El contenedor del panorama debe tener una transición suave para el filtro */
+#panorama {
+    transition: filter 0.3s ease-out;
+}
+
+/* Cuando activemos esta clase, se desenfocará */
+#panorama.en-movimiento {
+    filter: blur(4px); /* Puedes subir a 6px si quieres más velocidad */
+    pointer-events: none; /* Evita clics accidentales mientras viajas */
+}
+
 .pnlm-load-box {
     display: none !important;
 }
@@ -6,13 +17,12 @@
     width: 100vw;
     height: 100vh;
     z-index: 50;
-    display: none;
 }
  .loading-overlay {
     z-index: 100;
     position: absolute;
     inset: 0;
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;

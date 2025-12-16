@@ -7,7 +7,6 @@ const acceso = document.getElementById("acceso")
 const acceso_cont = document.getElementById("acceso_cont")
 const escene_change = document.getElementById("escene_change")
 
-
 var boxTitulo = boxCartel.querySelector(".box__header__h3")
 var boxDescripcion = boxCartel.querySelector(".box__body__p")
 var loadingEl = document.getElementById('loading');
@@ -47,10 +46,15 @@ window.irEscenaConZoom = function(evento, args){
     var currentHfov = pViewer.getHfov();
     var currentPitch = pViewer.getPitch();
     var currentYaw = pViewer.getYaw();
-    
+    var container = document.getElementById('panorama'); // Capturamos el div
+
+
+    // 3. Esperar y cambiar escen
     // Paso 1: Zoom in rápido
     // Mantenemos el mismo Pitch y Yaw, pero cerramos el FOV a 60 (zoom in)
     pViewer.lookAt(currentPitch, currentYaw, 60, 1000);
+    // ¡Agregamos la clase aquí!
+    container.classList.add('en-movimiento');
 
     // Paso 2: Esperamos y cambiamos
     setTimeout(function() {
@@ -229,9 +233,13 @@ class ViewerConstructor{
         this.simulateProgress();
     }
     changeEscena(){
+        this.viewer.on("load", () => {
+            if(panorama.classList.contains('en-movimiento')){
+                panorama.classList.remove('en-movimiento');
+            }
+        });
         this.viewer.on("scenechange",(sceneId)=>{
             console.log("Cambiando a escena:", sceneId);
-            this.loadViewer();
             this.actualizarImagenes();
         })
     }
@@ -259,6 +267,8 @@ class ViewerConstructor{
         imagenes.forEach((imagen)=>{
                 imagen.addEventListener("click", ()=>{
                 this.viewer.loadScene(imagen.dataset.scena);
+                this.loadViewer();
+
             })
         })
         var escenaActualId = this.viewer.getScene();
