@@ -48,14 +48,14 @@ window.irEscenaConZoom = function(evento, args){
     // 3. Esperar y cambiar escen
     // Paso 1: Zoom in rápido
     // Mantenemos el mismo Pitch y Yaw, pero cerramos el FOV a 60 (zoom in)
-    pViewer.lookAt(args.pitch, args.yaw, 20, 600);
+    pViewer.lookAt(args.pitch, args.yaw, 20, 400);
     // ¡Agregamos la clase aquí!
     container.classList.add('en-movimiento');
 
     // Paso 2: Esperamos y cambiamos
     setTimeout(function() {
         pViewer.loadScene(args.id);
-    }, 500); 
+    }, 300); 
 }
 const consejos = ["Puedes "]
 class ViewerConstructor{
