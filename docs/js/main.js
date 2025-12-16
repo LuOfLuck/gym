@@ -52,14 +52,14 @@ window.irEscenaConZoom = function(evento, args){
     // 3. Esperar y cambiar escen
     // Paso 1: Zoom in rápido
     // Mantenemos el mismo Pitch y Yaw, pero cerramos el FOV a 60 (zoom in)
-    pViewer.lookAt(currentPitch, currentYaw, 60, 1000);
+    pViewer.lookAt(currentPitch, currentYaw, 60, 1500);
     // ¡Agregamos la clase aquí!
     container.classList.add('en-movimiento');
 
     // Paso 2: Esperamos y cambiamos
     setTimeout(function() {
         pViewer.loadScene(args.id);
-    }, 500); 
+    }, 300); 
 }
 const consejos = ["Puedes "]
 class ViewerConstructor{
@@ -84,6 +84,7 @@ class ViewerConstructor{
             "default": {
                 "firstScene": cuartos[0].id,
                 "sceneFadeDuration": 1000,
+                "hfov": 120,
                 "showLoader": false,
                 "autoLoad": true,
                 "showControls": false,
@@ -94,11 +95,12 @@ class ViewerConstructor{
         this.cuartos.forEach((element, index)=> {
             scenes[`${index}`] = {
                 title: "",
-                hfov: 110,
+                hfov: 120,
                 pitch: 0,
                 yaw: 0,
                 type: "equirectangular",
                 panorama: element.url,
+                preview: element.preview,
                 hotSpots: []
             };
             let objetos = []
