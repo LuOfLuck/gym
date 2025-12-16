@@ -163,14 +163,12 @@ class ViewerConstructor{
         setTimeout(() => {
             loadingEl.classList.add("hidden");
         }, 300);
-        this.actualizarExit()
     }
     viewerClic(){
         this.viewer.on("mousedown", (event) => {
             const coords = this.viewer.mouseEventToCoords(event);
             console.log(`Click detectado en -> Pitch: ${coords[0]}, Yaw: ${coords[1]}`);
         });
-   
     }
     viewerFocus(args){
     
@@ -237,9 +235,17 @@ class ViewerConstructor{
             if(panorama.classList.contains('en-movimiento')){
                 panorama.classList.remove('en-movimiento');
             }
+            if(!acceso.classList.contains("app__aceso--mostrar")){
+                acceso.classList.add("app__aceso--mostrar")
+            }
+            this.actualizarExit()
         });
         this.viewer.on("scenechange",(sceneId)=>{
             console.log("Cambiando a escena:", sceneId);
+            if(acceso.classList.contains("app__aceso--mostrar")){
+                acceso.classList.remove("app__aceso--mostrar")
+            }
+
             this.actualizarImagenes();
         })
     }
@@ -266,9 +272,8 @@ class ViewerConstructor{
         let imagenes = document.querySelectorAll(".app__aceso__img");
         imagenes.forEach((imagen)=>{
                 imagen.addEventListener("click", ()=>{
-                this.viewer.loadScene(imagen.dataset.scena);
-                this.loadViewer();
-
+                    this.viewer.loadScene(imagen.dataset.scena);
+                    this.loadViewer();
             })
         })
         var escenaActualId = this.viewer.getScene();
@@ -293,6 +298,7 @@ class ViewerConstructor{
     }
     }
     actualizarExit(){
+        console.log("actualizarExit")
         let exits = document.querySelectorAll(".custom-exit");
         const div1 = document.createElement("div");
         div1.className = "triangulo-1";
