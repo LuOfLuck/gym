@@ -122,9 +122,21 @@
         -->
     </div>
 </footer>
+<script>
+    // Detectamos si estamos en la PC (localhost)
+    const esLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
+    // Elegimos la ruta correcta
+    const scriptUrl = esLocal 
+        ? 'http://localhost:8080/docs/js/main.js'   // Ruta para tu PC
+        : 'https://viar.alwaysdata.net/js/main.js';                              // Ruta para Alwaysdata (Relativa es mejor aquí)
+
+    // Creamos la etiqueta <script> y la inyectamos
+    const script = document.createElement('script');
+    script.src = scriptUrl;
+    document.body.appendChild(script);
+</script>
 <script src="js/modelo.js"></script>
-<script src="js/main.js"></script>
 <script src="js/navegador.js"></script>
 </body>
 </html>

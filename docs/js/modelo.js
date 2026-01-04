@@ -1,10 +1,10 @@
 // Configuración base de tu API
-const API_BASE = "https://viar.liveblog365.com/api.php";
+const API_BASE = "https://viar.alwaysdata.net/api.php";
 const ID_GYMNASIO = 7;
 
 // Variables globales donde se guardarán los datos finales
-const modelos = {};
-const cuartos = [];
+let modelos = {};
+let cuartos = [];
 
 async function cargarDatosDelTour() {
     try {
@@ -88,8 +88,7 @@ async function cargarDatosDelTour() {
         console.log("Variable 'modelos':", modelos);
         console.log("Variable 'cuartos':", cuartos);
 
-        // AQUÍ DEBES LLAMAR A LA FUNCIÓN QUE INICIA TU VISOR
-        // Por ejemplo: iniciarPannellum(cuartos[0].id);
+        main()
         
     } catch (error) {
         console.error("Error cargando el tour:", error);
